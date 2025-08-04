@@ -1,0 +1,9 @@
+body {
+  background-color: #2a1d10;
+  font-family: var(--font-sans);
+}
+
+/* Button */
+.p-button-raised:disabled {
+  box-shadow: none !important;
+}
