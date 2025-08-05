@@ -1,9 +1,11 @@
 <template>
   <div class="flex h-full w-full">
     <Card class="mx-auto my-auto">
-      <template #title><div class="border-b-1">Settings</div></template>
+      <template #title>
+        <div class="border-b-1">{{ cardTitle }}</div>
+      </template>
       <template #content>
-        <Settings :is="cardContent" />
+        <component :is="cardContent" @next="stateSetter()" />
       </template>
     </Card>
   </div>
@@ -11,18 +13,31 @@
 
 <script setup lang="ts">
 /* Import */
-import Settings from '@/components/Settings.vue'
 import { Card } from 'primevue'
-import { ref, shallowRef } from 'vue'
+import { onMounted, ref, shallowRef, type Component } from 'vue'
 
 /* Const */
-const cardTitle = ref<string>('Settings')
-const cardContent = shallowRef(Settings)
+const cardTitle = ref<string>('')
+const cardContent = shallowRef<Component>()
+
+/* Lifecycle Hooks */
+onMounted(() => {
+  stateSetter()
+})
 
 /* Functions */
+function stateSetter(): void {}
+
 function switchToSettings(): void {
   cardTitle.value = 'Settings'
   import('../components/Settings.vue').then((module) => {
+    cardContent.value = module.default
+  })
+}
+
+function switchToClasses(): void {
+  cardTitle.value = 'Classes'
+  import('../components/Classes.vue').then((module) => {
     cardContent.value = module.default
   })
 }

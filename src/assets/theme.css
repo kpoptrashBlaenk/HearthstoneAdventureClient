@@ -1,6 +1,12 @@
+/* Body */
 body {
   background-color: var(--brown-dark);
   font-family: 'Baloo 2';
+}
+
+/* Shadow */
+.shadow-gold {
+  box-shadow: var(--p-button-active-raised-shadow);
 }
 
 /* Button */
@@ -11,7 +17,7 @@ body {
   box-shadow: none;
 }
 .p-button-raised:hover {
-  box-shadow: var(--p-button-hover-raised-shadow);
+  box-shadow: var(--shadow-lg) var(--gold);
 }
 .p-button-raised:active {
   box-shadow: var(--p-button-active-raised-shadow);

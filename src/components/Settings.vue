@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center">
     <!-- Number of Classes -->
-    <Slider v-model="classNumber" :min="1" :max="100" :step="1" id="classNumberSlider" class="mt-5 mb-2" />
+    <Slider v-model="classNumber" :min="1" :max="110" :step="1" id="classNumberSlider" class="mt-5 mb-2" />
     <label for="classNumberSlider">{{ roundClassesNumber() }} {{ roundClassesNumber() === 1 ? 'Class' : 'Classes' }}</label>
 
     <!-- Number of Player Health -->
@@ -18,10 +18,10 @@
 
     <!-- Start -->
     <Button class="mt-4" raised @click="start()">Start</Button>
-
-    <!-- Toast -->
-    <Toast />
   </div>
+
+  <!-- Toast -->
+  <Toast />
 </template>
 
 <script setup lang="ts">
@@ -30,6 +30,9 @@ import { useGlobalStore } from '@/store/globalStore'
 import { errorToast } from '@/utils/functions'
 import { Button, IftaLabel, InputNumber, Slider, Toast, useToast } from 'primevue'
 import { ref } from 'vue'
+
+/* Emit */
+const emit = defineEmits(['next'])
 
 /* Const */
 const classNumber = ref<number>(30)
@@ -44,25 +47,27 @@ function roundClassesNumber(): number {
 }
 
 function start(): void {
-  // Set classes number
-  if (classNumber.value && roundClassesNumber() <= 10 && roundClassesNumber() >= 1) {
-    globalStore.setClassesNumber(roundClassesNumber())
-  } else {
+  // Check classes number
+  if (!classNumber.value || roundClassesNumber() > 11 || roundClassesNumber() < 1) {
     errorToast(toast, `Class number not valid: ${roundClassesNumber()}`)
+    return
   }
 
-  // Set health
-  if (healthNumber.value) {
-    globalStore.setHealth(healthNumber.value)
-  } else {
+  // Check health
+  if (!healthNumber.value) {
     errorToast(toast, `Health not valid: ${healthNumber.value}`)
+    return
   }
 
-  // Set events number
-  if (eventsNumber.value) {
-    globalStore.setEvents(eventsNumber.value)
-  } else {
+  // Check events number
+  if (!eventsNumber.value) {
     errorToast(toast, `Events number not valid: ${eventsNumber.value}`)
+    return
   }
+
+  globalStore.setClassesNumber(roundClassesNumber())
+  globalStore.setHealth(healthNumber.value)
+  globalStore.setEvents(eventsNumber.value)
+  emit('next')
 }
 </script>
