@@ -11,3 +11,9 @@ export const CLASSES = {
   WARLOCK: 'WARLOCK',
   WARRIOR: 'WARRIOR',
 }
+
+export const STATES = {
+  START: 'START',
+  SETTINGS: 'SETTINGS',
+  CLASSES: 'CLASSES',
+}

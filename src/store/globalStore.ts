@@ -3,13 +3,13 @@ import { defineStore } from 'pinia'
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     classes: {
-      number: 0 as number,
+      number: 0,
       classes: [] as string[],
     },
-    health: 0 as number,
+    health: 0,
     events: {
-      current: 0 as number,
-      max: 0 as number,
+      current: 0,
+      max: 0,
     },
   }),
 
