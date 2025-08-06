@@ -38,6 +38,7 @@
 /* Import */
 import { useStateStore } from '@/store/stateStore'
 import { STATES } from '@/utils/constants'
+import { fetchCards } from '@/utils/functions'
 import { Card } from 'primevue'
 import { nextTick, onMounted, ref, shallowRef, type Component } from 'vue'
 
@@ -51,8 +52,11 @@ const stateStore = useStateStore()
 const transitioning = ref<boolean>(true)
 
 /* Lifecycle Hooks */
-onMounted(() => {
+onMounted(async () => {
   stateSetter()
+
+  const cards = await fetchCards()
+  console.log(cards)
 })
 
 /* Functions */
