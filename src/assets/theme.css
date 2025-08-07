@@ -9,6 +9,25 @@ body {
   box-shadow: var(--p-button-active-raised-shadow);
 }
 
+/* Border */
+.border-gold {
+  border: 1px solid var(--gold-dark);
+}
+
+/* Background */
+.bg-common {
+  background-color: var(--common);
+}
+.bg-rare {
+  background-color: var(--rare);
+}
+.bg-epic {
+  background-color: var(--epic);
+}
+.bg-legendary {
+  background-color: var(--legendary);
+}
+
 /* Button */
 .p-button {
   border-width: var(--p-button-border-thickness) !important;
@@ -21,6 +40,16 @@ body {
 }
 .p-button-raised:active {
   box-shadow: var(--p-button-active-raised-shadow);
+}
+
+/* Text */
+.text-shadow {
+  text-shadow: var(--text-shadow);
+}
+
+/* Popover */
+.p-popover {
+  pointer-events: none;
 }
 
 /* Root */
@@ -39,6 +68,11 @@ body {
   --grey: #999999 !important;
   --grey-light: #b0b0b0 !important;
   --grey-dark: #7a7a7a !important;
+
+  --common: #858585 !important;
+  --rare: #315376 !important;
+  --epic: #644c82 !important;
+  --legendary: #855c25 !important;
 
   /* Other */
   --shadow-sm: 0 0 2px 1px;
@@ -82,4 +116,17 @@ body {
   /* IftaLabel */
   --p-iftalabel-color: var(--brown-light) !important;
   --p-iftalabel-focus-color: var(--brown-dark) !important;
+
+  /* Text */
+  --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+
+  /* Popover */
+  --p-popover-background: transparent !important;
+  --p-popover-border-color: transparent !important;
+  --p-popover-border-radius: 0 !important;
+  --p-popover-shadow: none !important;
+  --p-popover-content-padding: 0 !important;
+  --p-popover-color: inherit !important;
+  --p-popover-gutter: 0 !important;
+  --p-popover-arrow-offset: 0 !important;
 }

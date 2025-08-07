@@ -1,31 +1,12 @@
 <template>
-  <div v-if="transitioning" ref="previewRef" class="pointer-events-none absolute z-0 opacity-0">
-    <Card>
-      <template #title>
-        <div class="border-b-1">{{ cardTitle }}</div>
-      </template>
-      <template #content>
-        <div>
-          <component :is="cardContentBeforeAnimation" @next="stateSetter()" />
-        </div>
-      </template>
-    </Card>
-  </div>
-
-  <div class="z-10 flex h-full w-full">
-    <div
-      class="mx-auto my-auto transition-all duration-300 ease-in-out"
-      :style="{
-        height: rect.height + 'px',
-        width: rect.width + 'px',
-      }"
-    >
+  <div class="flex h-full w-full items-center justify-center">
+    <div class="mx-auto my-auto max-w-11/12 transition-all duration-300 ease-in-out">
       <Card class="h-full w-full">
         <template #title>
-          <div class="border-b-1" :class="{ 'opacity-0': transitioning }">{{ cardTitle }}</div>
+          <div class="border-b-1">{{ cardTitle }}</div>
         </template>
         <template #content>
-          <div :class="{ 'opacity-0': transitioning }" class="transition-opacity duration-300 ease-in-out">
+          <div class="transition-opacity duration-400 ease-in-out">
             <component :is="cardContent" @next="stateSetter()" />
           </div>
         </template>
@@ -36,62 +17,51 @@
 
 <script setup lang="ts">
 /* Import */
+import { useCardStore } from '@/store/cardStore'
 import { useStateStore } from '@/store/stateStore'
 import { STATES } from '@/utils/constants'
-import { fetchCards } from '@/utils/functions'
 import { Card } from 'primevue'
-import { nextTick, onMounted, ref, shallowRef, type Component } from 'vue'
+import { onMounted, ref, shallowRef, type Component } from 'vue'
 
 /* Const */
 const cardTitle = ref<string>('Start')
 const cardContent = shallowRef<Component>()
-const cardContentBeforeAnimation = shallowRef<Component>()
-const previewRef = ref<HTMLElement>()
-const rect = ref<any>({ height: 0, width: 0 })
+const cardStore = useCardStore()
 const stateStore = useStateStore()
-const transitioning = ref<boolean>(true)
 
 /* Lifecycle Hooks */
-onMounted(async () => {
-  stateSetter()
+onMounted(() => {
+  // ### FOR TESTING ONLY: ###
+  stateStore.setClassesState()
 
-  const cards = await fetchCards()
-  console.log(cards)
+  cardStore.init()
+  stateSetter()
 })
 
 /* Functions */
 function stateSetter(): void {
   if (stateStore.currentState === STATES.START) {
-    swtichComponent('Settings')
+    swtichComponent('Settings', 'Settings')
     stateStore.setSettingsState()
     return
   }
 
   if (stateStore.currentState === STATES.SETTINGS) {
-    swtichComponent('Classes')
+    swtichComponent('Classes', 'Classes')
     stateStore.setClassesState()
     return
   }
 
   if (stateStore.currentState === STATES.CLASSES) {
-    return
+    swtichComponent('BasicDeck', 'Basic Decks')
+    stateStore.setBasicDeckState()
   }
 }
 
-async function swtichComponent(name: string): Promise<void> {
-  const module = await import(`../components/${name}.vue`)
+async function swtichComponent(component: string, title: string): Promise<void> {
+  const module = await import(`../components/${component}.vue`)
 
-  cardContentBeforeAnimation.value = module.default
-  transitioning.value = true
-
-  await nextTick()
-
-  rect.value = previewRef.value?.getBoundingClientRect()
-
-  setTimeout(() => {
-    cardTitle.value = name
-    cardContent.value = module.default
-    transitioning.value = false
-  }, 300)
+  cardTitle.value = title
+  cardContent.value = module.default
 }
 </script>

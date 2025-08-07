@@ -6,14 +6,17 @@ export const useStateStore = defineStore('state', {
     currentState: STATES.START,
   }),
   actions: {
-    setStartState() {
+    setStartState(): void {
       this.currentState = STATES.START
     },
-    setSettingsState() {
+    setSettingsState(): void {
       this.currentState = STATES.SETTINGS
     },
-    setClassesState() {
+    setClassesState(): void {
       this.currentState = STATES.CLASSES
+    },
+    setBasicDeckState(): void {
+      this.currentState = STATES.BASIC_DECK
     },
   },
 })

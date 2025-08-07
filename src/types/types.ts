@@ -1,3 +1,5 @@
+import type { CLASSES, RARITY_ID } from '@/utils/constants'
+
 export type HearthstoneCard = {
   id: number
   collectible: number
@@ -22,7 +24,11 @@ export type HearthstoneCard = {
   isZilliaxCosmeticModule: boolean
 }
 
+export type ClassesValues = (typeof CLASSES)[keyof typeof CLASSES]
+
+export type RarityValues = (typeof RARITY_ID)[keyof typeof RARITY_ID]
+
 export type QueryParam = {
-  key: string
+  key: keyof HearthstoneCard | 'page'
   value: string
 }
