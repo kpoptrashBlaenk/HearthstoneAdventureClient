@@ -1,14 +1,15 @@
 <template>
   <div class="flex h-full w-full items-center justify-center">
-    <div class="mx-auto my-auto max-w-11/12 transition-all duration-300 ease-in-out">
+    <div
+      class="mx-auto my-auto max-w-11/12 transition-opacity ease-in-out"
+      :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': transition }]"
+    >
       <Card class="h-full w-full">
         <template #title>
           <div class="border-b-1">{{ cardTitle }}</div>
         </template>
         <template #content>
-          <div class="transition-opacity duration-400 ease-in-out">
-            <component :is="cardContent" @next="stateSetter()" />
-          </div>
+          <component :is="cardContent" @next="stateSetter()" />
         </template>
       </Card>
     </div>
@@ -28,6 +29,8 @@ const cardTitle = ref<string>('Start')
 const cardContent = shallowRef<Component>()
 const cardStore = useCardStore()
 const stateStore = useStateStore()
+const transition = ref<boolean>(false)
+const TRANSITION_DURATION = 200
 
 /* Lifecycle Hooks */
 onMounted(() => {
@@ -61,7 +64,12 @@ function stateSetter(): void {
 async function swtichComponent(component: string, title: string): Promise<void> {
   const module = await import(`../components/${component}.vue`)
 
-  cardTitle.value = title
-  cardContent.value = module.default
+  transition.value = true
+
+  setTimeout(() => {
+    cardTitle.value = title
+    cardContent.value = module.default
+    transition.value = false
+  }, TRANSITION_DURATION)
 }
 </script>
