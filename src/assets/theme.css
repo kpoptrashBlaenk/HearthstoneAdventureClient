@@ -9,6 +9,19 @@ body {
   box-shadow: var(--p-button-active-raised-shadow);
 }
 
+/* Image */
+.event-image {
+  box-shadow: var(--shadow-sm) var(--gold);
+}
+.event-image:hover {
+  box-shadow: var(--shadow-lg) var(--gold);
+  scale: 1.1;
+}
+.event-image:active {
+  box-shadow: var(--p-button-active-raised-shadow);
+  scale: 1.2;
+}
+
 /* Border */
 .border-gold {
   border: 1px solid var(--gold-dark);

@@ -1,15 +1,32 @@
 <template>
-  <div class="flex h-full w-full items-center justify-center">
-    <div
-      class="mx-auto my-auto max-w-11/12 transition-opacity ease-in-out"
-      :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': transition }]"
-    >
-      <Card class="h-full w-full">
+  <div class="flex h-[98vh] w-[98vw] items-center justify-center">
+    <div class="my-auto flex items-center gap-30">
+      <!-- Base Card -->
+      <Card
+        class="h-full transition-opacity ease-in-out"
+        :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': baseTransition }]"
+      >
         <template #title>
-          <div class="border-b-1">{{ cardTitle }}</div>
+          <div class="border-b-1">{{ baseCardTitle }}</div>
         </template>
         <template #content>
-          <component :is="cardContent" @next="stateSetter()" />
+          <component :is="baseCardContent" @next="stateSetter()" />
+        </template>
+      </Card>
+
+      <!-- Event Card -->
+      <Card
+        v-if="eventCardContent"
+        class="transition-opacity ease-in-out"
+        :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': eventTransition }]"
+      >
+        <template #title>
+          <div class="border-b-1">{{ eventCardTitle }}</div>
+        </template>
+        <template #content>
+          <div class="h-full">
+            <component :is="eventCardContent" @next="stateSetter()" />
+          </div>
         </template>
       </Card>
     </div>
@@ -25,11 +42,14 @@ import { Card } from 'primevue'
 import { onMounted, ref, shallowRef, type Component } from 'vue'
 
 /* Const */
-const cardTitle = ref<string>('Start')
-const cardContent = shallowRef<Component>()
+const baseCardContent = shallowRef<Component>()
+const baseCardTitle = ref<string>('Start')
+const baseTransition = ref<boolean>(false)
 const cardStore = useCardStore()
+const eventCardContent = shallowRef<Component>()
+const eventCardTitle = ref<string>('Start')
+const eventTransition = ref<boolean>(false)
 const stateStore = useStateStore()
-const transition = ref<boolean>(false)
 const TRANSITION_DURATION = 200
 
 /* Lifecycle Hooks */
@@ -44,32 +64,45 @@ onMounted(() => {
 /* Functions */
 function stateSetter(): void {
   if (stateStore.currentState === STATES.START) {
-    swtichComponent('Settings', 'Settings')
+    swtichBaseComponent('Settings', 'Settings')
     stateStore.setSettingsState()
     return
   }
 
   if (stateStore.currentState === STATES.SETTINGS) {
-    swtichComponent('Classes', 'Classes')
+    swtichBaseComponent('Classes', 'Classes')
     stateStore.setClassesState()
     return
   }
 
   if (stateStore.currentState === STATES.CLASSES) {
-    swtichComponent('BasicDeck', 'Basic Decks')
+    swtichBaseComponent('BasicDeck', 'Your Cards')
+    switchEventComponent('StartEvent', 'Events')
     stateStore.setBasicDeckState()
   }
 }
 
-async function swtichComponent(component: string, title: string): Promise<void> {
+async function swtichBaseComponent(component: string, title: string): Promise<void> {
   const module = await import(`../components/${component}.vue`)
 
-  transition.value = true
+  baseTransition.value = true
 
   setTimeout(() => {
-    cardTitle.value = title
-    cardContent.value = module.default
-    transition.value = false
+    baseCardTitle.value = title
+    baseCardContent.value = module.default
+    baseTransition.value = false
+  }, TRANSITION_DURATION)
+}
+
+async function switchEventComponent(component: string, title: string): Promise<void> {
+  const module = await import(`../components/${component}.vue`)
+
+  eventTransition.value = true
+
+  setTimeout(() => {
+    eventCardTitle.value = title
+    eventCardContent.value = module.default
+    eventTransition.value = false
   }, TRANSITION_DURATION)
 }
 </script>
