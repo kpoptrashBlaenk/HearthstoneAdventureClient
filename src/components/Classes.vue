@@ -4,7 +4,7 @@
     <div class="mt-3 grid grid-cols-6 gap-5">
       <!-- Classes -->
       <div
-        v-for="cl in classes"
+        v-for="cl in classes.filter((cl) => cl.id !== CLASSES.NEUTRAL.id)"
         :class="{ 'shadow-gold': selectedClasses.includes(cl) }"
         class="col h-32 w-32 cursor-pointer rounded-md bg-gray-200 transition-transform duration-150 active:scale-90"
         @click="selectClass(cl)"
