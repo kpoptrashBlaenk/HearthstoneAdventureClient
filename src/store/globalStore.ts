@@ -1,4 +1,4 @@
-import type { ClassesValues, Event } from '@/types/types'
+import type { Class, Event } from '@/types/types'
 import { CLASSES } from '@/utils/constants'
 import { defineStore } from 'pinia'
 
@@ -6,7 +6,7 @@ export const useGlobalStore = defineStore('global', {
   state: () => ({
     classes: {
       number: 1,
-      classes: [CLASSES.ROGUE] as ClassesValues[],
+      classes: [CLASSES.ROGUE] as Class[],
     },
     health: 15,
     events: {
@@ -21,7 +21,7 @@ export const useGlobalStore = defineStore('global', {
     setClassesNumber(value: number): void {
       this.classes.number = value
     },
-    setClasses(classes: ClassesValues[]): void {
+    setClasses(classes: Class[]): void {
       this.classes.classes = classes
     },
 

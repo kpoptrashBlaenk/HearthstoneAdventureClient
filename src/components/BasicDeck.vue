@@ -8,8 +8,14 @@
       <!-- Title -->
       <template #title>
         <div class="flex items-center">
-          <img v-if="classId !== CLASSES.NEUTRAL.id" class="h-7" :src="`icons/${getClassById(classId).name}.webp`" />
-          <div :class="{ 'ms-3': classId !== CLASSES.NEUTRAL.id }" class="text-2xl">{{ getClassById(classId).name }}</div>
+          <img
+            v-if="parseInt(classId) !== CLASSES.NEUTRAL.id"
+            class="h-7"
+            :src="`icons/${getClassById(parseInt(classId)).name}.webp`"
+          />
+          <div :class="{ 'ms-3': parseInt(classId) !== CLASSES.NEUTRAL.id }" class="text-2xl">
+            {{ getClassById(parseInt(classId)).name }}
+          </div>
         </div>
       </template>
       <!-- Content -->
@@ -49,7 +55,7 @@
                 {{ card.name }}
               </div>
               <!-- Amount & Rarity -->
-              <div class="h-full w-5 border-l-1 pe-0.5 text-center" :class="rarityColor(card.rarityId.toString())">
+              <div class="h-full w-5 border-l-1 pe-0.5 text-center" :class="rarityColor(card.rarityId)">
                 {{ card === cards[index + 1] ? 2 : 1 }}
               </div>
             </div>
@@ -65,7 +71,7 @@
 import { useCardStore } from '@/store/cardStore'
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
-import type { RarityValues } from '@/types/types'
+import type { RarityId } from '@/types/types'
 import { CLASSES, RARITY_ID } from '@/utils/constants'
 import { getClassById } from '@/utils/functions'
 import { Card, Popover } from 'primevue'
@@ -90,7 +96,7 @@ function togglePopover(event: any, image: string): void {
   cardPopoverRef.value.toggle(event)
 }
 
-function rarityColor(rarity: RarityValues): string {
+function rarityColor(rarity: RarityId): string {
   switch (rarity) {
     case RARITY_ID.COMMON:
       return 'bg-common'

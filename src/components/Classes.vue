@@ -24,7 +24,7 @@
 <script setup lang="ts">
 /* Import */
 import { useGlobalStore } from '@/store/globalStore'
-import type { ClassesValues } from '@/types/types'
+import type { Class } from '@/types/types'
 import { CLASSES } from '@/utils/constants'
 import { errorToast } from '@/utils/functions'
 import { Button, Toast, useToast } from 'primevue'
@@ -34,9 +34,9 @@ import { ref } from 'vue'
 const emit = defineEmits(['next'])
 
 /* Const */
-const classes = ref<ClassesValues[]>(Object.values(CLASSES))
+const classes = ref<Class[]>(Object.values(CLASSES))
 const globalStore = useGlobalStore()
-const selectedClasses = ref<ClassesValues[]>([])
+const selectedClasses = ref<Class[]>([])
 const toast = useToast()
 
 /* Functions */
@@ -51,7 +51,7 @@ function go(): void {
   emit('next')
 }
 
-function selectClass(cl: ClassesValues): void {
+function selectClass(cl: Class): void {
   // Remove class if already selected
   const classSelectedIndex = selectedClasses.value?.findIndex((c) => c === cl)
   if (classSelectedIndex > -1) {

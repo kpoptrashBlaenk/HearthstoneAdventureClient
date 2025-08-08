@@ -1,4 +1,4 @@
-import type { ClassesValues, HearthstoneCard, QueryParam } from '@/types/types'
+import type { Class, HearthstoneCard, QueryParam } from '@/types/types'
 import type { ToastServiceMethods } from 'primevue'
 import { CLASSES, RARITY_ID } from './constants'
 
@@ -53,9 +53,9 @@ export async function fetchCards(params: QueryParam[] = []): Promise<Hearthstone
  * Use id to find class key
  *
  * @param classId Id of class
- * @returns Corresponding {@link ClassesValues}
+ * @returns Corresponding {@link Class}
  */
-export function getClassById(classId: string): ClassesValues {
+export function getClassById(classId: number): Class {
   return Object.values(CLASSES).find((cl) => cl.id === classId)!
 }
 
@@ -65,6 +65,6 @@ export function getClassById(classId: string): ClassesValues {
  * @param rarityId Id of class
  * @returns Corresponding rarity kew
  */
-export function getRarityById(rarityId: string): string {
+export function getRarityById(rarityId: number): number {
   return Object.values(RARITY_ID).find((rarity) => rarity === rarityId)!
 }

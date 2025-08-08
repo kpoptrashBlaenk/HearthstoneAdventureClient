@@ -1,4 +1,4 @@
-import type { ClassesValues, HearthstoneCard, QueryParam } from '@/types/types'
+import type { Class, HearthstoneCard, QueryParam } from '@/types/types'
 import { CLASSES, RARITY_ID } from '@/utils/constants'
 import { fetchCards } from '@/utils/functions'
 import { defineStore } from 'pinia'
@@ -37,21 +37,16 @@ export const useCardStore = defineStore('card', {
 
           // If searching in array
           if (Array.isArray(cardValue)) {
-            return cardValue.map((v) => v.toString()).includes(param.value)
-          }
-
-          // If searching for class id, include neutral
-          if (param.key === 'classId') {
-            return cardValue?.toString() === param.value
+            return cardValue.map((v) => v).includes(param.value as number)
           }
 
           // If searching in string/number/boolean
-          return cardValue?.toString() === param.value
+          return cardValue === param.value
         })
       })
     },
 
-    createBasicDeck(classes: ClassesValues[]): HearthstoneCard[] {
+    createBasicDeck(classes: Class[]): HearthstoneCard[] {
       let cards: HearthstoneCard[] = []
       const params = classes.map((cl) => ({
         key: 'classId' as keyof HearthstoneCard,
@@ -61,8 +56,8 @@ export const useCardStore = defineStore('card', {
       // Filter for all classes
       const filtered = this.filter(this.cards, [...params, { key: 'classId', value: CLASSES.NEUTRAL.id }], 'some')
 
-      const checkMax = (card: HearthstoneCard, key: keyof HearthstoneCard, value: string, amount: number): boolean => {
-        return card[key].toString() === value && cards.filter((card) => card[key].toString() === value).length >= amount
+      const checkMax = (card: HearthstoneCard, key: keyof HearthstoneCard, value: string | number, amount: number): boolean => {
+        return card[key] === value && cards.filter((card) => card[key] === value).length >= amount
       }
 
       // 10 for each class, +20 for neutrals to get to 20
@@ -71,13 +66,12 @@ export const useCardStore = defineStore('card', {
         const randomCard = filtered[randomIndex]
 
         const isDuplicate =
-          cards.filter((card) => card.id === randomCard.id).length >=
-          (randomCard.rarityId.toString() === RARITY_ID.LEGENDARY ? 1 : 2)
+          cards.filter((card) => card.id === randomCard.id).length >= (randomCard.rarityId === RARITY_ID.LEGENDARY ? 1 : 2)
         const isMaxClass = checkMax(
           randomCard,
           'classId',
-          randomCard.classId.toString(),
-          randomCard.classId.toString() === CLASSES.NEUTRAL.id ? 20 : 10,
+          randomCard.classId,
+          randomCard.classId === CLASSES.NEUTRAL.id ? 20 : 10,
         )
         const isMaxCommon = checkMax(randomCard, 'rarityId', RARITY_ID.COMMON, 10 + 4 * classes.length)
         const isMaxRare = checkMax(randomCard, 'rarityId', RARITY_ID.RARE, 6 + 3 * classes.length)

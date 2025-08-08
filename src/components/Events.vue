@@ -11,7 +11,7 @@
 <script setup lang="ts">
 /* Import */
 import { useGlobalStore } from '@/store/globalStore'
-import { type Event } from '@/types/types'
+import type { Event } from '@/types/types'
 import { EVENTS } from '@/utils/constants'
 import { onBeforeMount, ref } from 'vue'
 
@@ -25,7 +25,8 @@ const globalStore = useGlobalStore()
 /* Lifecycle Hooks */
 onBeforeMount(() => {
   for (let i = 0; i < 3; i++) {
-    const event = EVENTS[Math.floor(Math.random() * EVENTS.length)]
+    const eventsArray = Object.values(EVENTS)
+    const event = eventsArray[Math.floor(Math.random() * eventsArray.length)]
 
     if (events.value.includes(event)) {
       i--
