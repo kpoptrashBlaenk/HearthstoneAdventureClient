@@ -25,4 +25,5 @@ export const STATES = {
   SETTINGS: 'SETTINGS',
   CLASSES: 'CLASSES',
   BASIC_DECK: 'BASIC_DECK',
+  EVENT: 'EVENT',
 }

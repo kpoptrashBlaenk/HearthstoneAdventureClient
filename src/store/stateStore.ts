@@ -18,5 +18,8 @@ export const useStateStore = defineStore('state', {
     setBasicDeckState(): void {
       this.currentState = STATES.BASIC_DECK
     },
+    setEventState(): void {
+      this.currentState = STATES.EVENT
+    },
   },
 })

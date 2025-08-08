@@ -10,16 +10,14 @@ body {
 }
 
 /* Image */
-.event-image {
-  box-shadow: var(--shadow-sm) var(--gold);
+.drop-shadow-gold {
+  filter: drop-shadow(var(--drop-shadow-sm) var(--gold));
 }
-.event-image:hover {
-  box-shadow: var(--shadow-lg) var(--gold);
-  scale: 1.1;
+.drop-shadow-gold:hover {
+  filter: drop-shadow(var(--drop-shadow-md) var(--gold));
 }
-.event-image:active {
-  box-shadow: var(--p-button-active-raised-shadow);
-  scale: 1.2;
+.drop-shadow-gold:active {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--gold));
 }
 
 /* Border */
@@ -87,10 +85,13 @@ body {
   --epic: #644c82 !important;
   --legendary: #855c25 !important;
 
-  /* Other */
+  /* Shadow */
   --shadow-sm: 0 0 2px 1px;
   --shadow-md: 0 0 4px 2px;
   --shadow-lg: 0 0 8px 4px;
+  --drop-shadow-sm: 0 0 4px;
+  --drop-shadow-md: 0 0 8px;
+  --drop-shadow-lg: 0 0 12px;
 
   /* Button */
   --p-button-primary-background: var(--purple-light) !important;

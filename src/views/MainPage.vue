@@ -77,8 +77,15 @@ function stateSetter(): void {
 
   if (stateStore.currentState === STATES.CLASSES) {
     swtichBaseComponent('BasicDeck', 'Your Cards')
-    switchEventComponent('StartEvent', 'Events')
+    switchEventComponent('StartEvent', 'Start')
     stateStore.setBasicDeckState()
+    return
+  }
+
+  if (stateStore.currentState === STATES.BASIC_DECK) {
+    switchEventComponent('StartEvent', 'Events')
+    stateStore.setEventState()
+    return
   }
 }
 
