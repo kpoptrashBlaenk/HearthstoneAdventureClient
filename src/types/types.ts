@@ -1,4 +1,4 @@
-import type { CLASSES, RARITY_ID } from '@/utils/constants'
+import type { CLASSES, EVENT_TYPES, RARITY_ID } from '@/utils/constants'
 
 export type HearthstoneCard = {
   id: number
@@ -27,6 +27,13 @@ export type HearthstoneCard = {
 export type ClassesValues = (typeof CLASSES)[keyof typeof CLASSES]
 
 export type RarityValues = (typeof RARITY_ID)[keyof typeof RARITY_ID]
+
+export type Event = {
+  id: string
+  image: string
+  tooltip: string
+  type: keyof typeof EVENT_TYPES
+}
 
 export type QueryParam = {
   key: keyof HearthstoneCard | 'page'

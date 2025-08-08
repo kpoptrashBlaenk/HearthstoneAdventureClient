@@ -21,5 +21,8 @@ export const useStateStore = defineStore('state', {
     setEventState(): void {
       this.currentState = STATES.EVENT
     },
+    setShopState(): void {
+      this.currentState = STATES.SHOP
+    },
   },
 })

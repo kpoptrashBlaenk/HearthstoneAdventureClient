@@ -1,4 +1,4 @@
-import type { ClassesValues } from '@/types/types'
+import type { ClassesValues, Event } from '@/types/types'
 import { CLASSES } from '@/utils/constants'
 import { defineStore } from 'pinia'
 
@@ -10,6 +10,7 @@ export const useGlobalStore = defineStore('global', {
     },
     health: 15,
     events: {
+      event: null as Event | null,
       current: 0,
       max: 5,
     },
@@ -36,7 +37,15 @@ export const useGlobalStore = defineStore('global', {
     setEvents(value: number): void {
       this.events.max = value
     },
+    setEvent(value: Event): void {
+      this.events.event = value
+    },
     incrementEvent(): void {
+      if (this.events.current === this.events.max) {
+        this.resetEvents()
+        return
+      }
+
       this.events.current++
     },
     resetEvents(): void {

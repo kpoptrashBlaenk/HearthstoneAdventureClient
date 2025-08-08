@@ -36,6 +36,7 @@
 <script setup lang="ts">
 /* Import */
 import { useCardStore } from '@/store/cardStore'
+import { useGlobalStore } from '@/store/globalStore'
 import { useStateStore } from '@/store/stateStore'
 import { STATES } from '@/utils/constants'
 import { Card } from 'primevue'
@@ -49,6 +50,7 @@ const cardStore = useCardStore()
 const eventCardContent = shallowRef<Component>()
 const eventCardTitle = ref<string>('Start')
 const eventTransition = ref<boolean>(false)
+const globalStore = useGlobalStore()
 const stateStore = useStateStore()
 const TRANSITION_DURATION = 200
 
@@ -83,9 +85,23 @@ function stateSetter(): void {
   }
 
   if (stateStore.currentState === STATES.BASIC_DECK) {
-    switchEventComponent('StartEvent', 'Events')
+    switchEventComponent('Events', 'Events')
     stateStore.setEventState()
     return
+  }
+
+  if (stateStore.currentState === STATES.EVENT) {
+    switch (globalStore.events.event?.type) {
+      case 'SHOP':
+        switchEventComponent('Events', 'Shop')
+        stateStore.setShopState()
+    }
+    return
+  }
+
+  if (stateStore.currentState === STATES.SHOP) {
+    switchEventComponent('Events', 'Events')
+    stateStore.setEventState()
   }
 }
 

@@ -1,3 +1,5 @@
+import type { Event } from '@/types/types'
+
 export const CLASSES = {
   DEATH_KNIGHT: { id: '1', name: 'Death Knight' },
   DEMON_HUNTER: { id: '14', name: 'Demon Hunter' },
@@ -20,10 +22,36 @@ export const RARITY_ID = {
   LEGENDARY: '5',
 }
 
+export const EVENTS: Event[] = [
+  {
+    id: '1',
+    image: 'bartender_bob',
+    tooltip: 'Offers a shop with any cards!',
+    type: 'SHOP',
+  },
+  {
+    id: '2',
+    image: 'bartender_roberta',
+    tooltip: 'Offers a shop with any cards!',
+    type: 'SHOP',
+  },
+  {
+    id: '3',
+    image: 'sparkle',
+    tooltip: 'Offers a shop with any cards!',
+    type: 'SHOP',
+  },
+]
+
+export const EVENT_TYPES = {
+  SHOP: 'SHOP',
+}
+
 export const STATES = {
   START: 'START',
   SETTINGS: 'SETTINGS',
   CLASSES: 'CLASSES',
   BASIC_DECK: 'BASIC_DECK',
   EVENT: 'EVENT',
+  SHOP: 'SHOP',
 }
