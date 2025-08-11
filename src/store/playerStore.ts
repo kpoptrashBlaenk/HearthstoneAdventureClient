@@ -1,16 +1,30 @@
 import type { HearthstoneCard } from '@/types/types'
-import { RARITY_ID } from '@/utils/constants'
+import { CLASSES, RARITY_ID } from '@/utils/constants'
 import { sortCards } from '@/utils/functions'
 import { defineStore } from 'pinia'
 
 export const usePlayerStore = defineStore('player', {
   state: () => ({
     cards: [] as HearthstoneCard[],
+    deck: [] as HearthstoneCard[],
     boughtCards: [] as HearthstoneCard[],
     soldCards: [] as HearthstoneCard[],
     gold: 20,
   }),
   actions: {
+    setCards(cards: HearthstoneCard[]) {
+      this.cards = sortCards(cards)
+    },
+
+    groupByClass(): Record<string, HearthstoneCard[]> {
+      return this.cards.reduce((result: Record<string, HearthstoneCard[]>, card: HearthstoneCard) => {
+        const key = card.classId.toString()
+        if (!result[key]) result[key] = []
+        result[key].push(card)
+        return result
+      }, {})
+    },
+
     buyCard(card: HearthstoneCard, cost: number): void {
       if (this.gold < cost) return
 
@@ -26,16 +40,6 @@ export const usePlayerStore = defineStore('player', {
 
       this.cards = sortCards(this.cards)
     },
-
-    groupByClass(): Record<string, HearthstoneCard[]> {
-      return this.cards.reduce((result: Record<string, HearthstoneCard[]>, card: HearthstoneCard) => {
-        const key = card.classId.toString()
-        if (!result[key]) result[key] = []
-        result[key].push(card)
-        return result
-      }, {})
-    },
-
     isBuyable(card: HearthstoneCard, cost: number): boolean {
       const wasBought = this.boughtCards.filter((boughtCard) => boughtCard.id === card.id).length >= 1
       const noGold = this.gold < cost
@@ -45,15 +49,6 @@ export const usePlayerStore = defineStore('player', {
 
       return true
     },
-
-    resetBoughtCards(): void {
-      this.boughtCards = []
-    },
-
-    resetSoldCards(): void {
-      this.soldCards = []
-    },
-
     sellCard(card: HearthstoneCard): void {
       this.gold += 5
       this.cards.splice(this.cards.indexOf(card), 1)
@@ -68,8 +63,41 @@ export const usePlayerStore = defineStore('player', {
       this.cards = sortCards(this.cards)
     },
 
-    setCards(cards: HearthstoneCard[]) {
-      this.cards = sortCards(cards)
+    resetBoughtCards(): void {
+      this.boughtCards = []
+    },
+    resetSoldCards(): void {
+      this.soldCards = []
+    },
+
+    addToDeck(card: HearthstoneCard): void {
+      this.deck.push(card)
+      this.deck = sortCards(this.deck)
+    },
+    removeFromDeck(card: HearthstoneCard): void {
+      this.deck.splice(this.deck.indexOf(card), 1)
+      this.deck = sortCards(this.deck)
+    },
+    isDeckClass(card: HearthstoneCard): boolean {
+      // If empty, add
+      if (this.deck.length === 0) return true
+
+      // If neutral, add
+      if (card.classId === CLASSES.NEUTRAL.id) return true
+
+      // If deck is neutral, add
+      if (this.deck.every((c) => c.classId === CLASSES.NEUTRAL.id)) return true
+
+      // If any card inside has this class (with the other checks, it shouldn't be able to have more than 1 class inside), add
+      if (this.deck.some((c) => c.classId === card.classId)) return true
+
+      return false
+    },
+    isMaxInDeck(card: HearthstoneCard): boolean {
+      return this.cards.filter((c) => c.id === card.id).length <= this.deck.filter((c) => c.id === card.id).length
+    },
+    deckFull(): boolean {
+      return this.deck.length >= 30
     },
   },
 })

@@ -15,7 +15,7 @@ export const useGlobalStore = defineStore('global', {
       round: 1,
       event: null as Event | null,
       current: 0,
-      max: 0,
+      max: 1,
     },
   }),
 
@@ -44,21 +44,20 @@ export const useGlobalStore = defineStore('global', {
     setEvent(value: Event): void {
       this.events.event = value
     },
+    clearEvent(): void {
+      this.incrementEvent()
+      this.events.event = null
+    },
     incrementEvent(): void {
-      if (this.events.current === this.events.max) {
+      if (this.isEndRound()) {
         this.resetEvents()
         return
       }
 
       this.events.current++
     },
-    incrementRound(): void {
-      if (this.events.current === this.events.max) {
-        this.resetEvents()
-        return
-      }
-
-      this.events.current++
+    isEndRound(): boolean {
+      return this.events.current === this.events.max
     },
     resetEvents(): void {
       this.events.round++

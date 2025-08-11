@@ -1,5 +1,6 @@
 import { STATES } from '@/utils/constants'
 import { defineStore } from 'pinia'
+import { useGlobalStore } from './globalStore'
 
 export const useStateStore = defineStore('state', {
   state: () => ({
@@ -19,10 +20,17 @@ export const useStateStore = defineStore('state', {
       this.currentState = STATES.BASIC_DECK
     },
     setEventState(): void {
+      useGlobalStore().clearEvent()
       this.currentState = STATES.EVENT
     },
     setShopState(): void {
       this.currentState = STATES.SHOP
+    },
+    setDeckState(): void {
+      this.currentState = STATES.DECK
+    },
+    setBattleState(): void {
+      this.currentState = STATES.BATTLE
     },
   },
 })

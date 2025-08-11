@@ -47,7 +47,6 @@ onBeforeMount(() => {
 /* Functions */
 function emitNext(event: Event): void {
   globalStore.setEvent(event)
-  globalStore.incrementEvent()
   emit('next')
 }
 </script>

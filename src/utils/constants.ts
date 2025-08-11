@@ -58,4 +58,6 @@ export const STATES = {
   BASIC_DECK: 'BASIC_DECK',
   EVENT: 'EVENT',
   SHOP: 'SHOP',
+  DECK: 'DECK',
+  BATTLE: 'BATTLE',
 }

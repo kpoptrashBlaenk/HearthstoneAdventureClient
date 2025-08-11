@@ -1,5 +1,7 @@
 <template>
-  <CardPopover />
+  <!-- Popover -->
+  <CardPopover ref="cardPopoverRef" />
+
   <div class="mt-3 flex flex-wrap justify-center gap-5">
     <!-- Card Lists -->
     <Card v-for="[classId, cards] in Object.entries(playerStore.groupByClass())">
@@ -20,7 +22,8 @@
       <template #content>
         <CardList
           :cards="cards"
-          @clicked="sellCard"
+          :context="'CARDS'"
+          @clicked="clicked"
           @popoverShow="cardPopoverRef?.popoverShow"
           @popoverHide="cardPopoverRef?.popoverHide"
         />
@@ -36,8 +39,9 @@
 import { useCardStore } from '@/store/cardStore'
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
+import { useStateStore } from '@/store/stateStore'
 import { type CardPopoverRef, type Class, type HearthstoneCard } from '@/types/types'
-import { CLASSES, EVENT_TYPES } from '@/utils/constants'
+import { CLASSES, EVENT_TYPES, STATES } from '@/utils/constants'
 import { classQueryParams, errorToast, getClassById } from '@/utils/functions'
 import { Card, Toast, useToast } from 'primevue'
 import { onBeforeMount, ref } from 'vue'
@@ -52,6 +56,7 @@ const cardPopoverRef = ref<CardPopoverRef>()
 const cardStore = useCardStore()
 const globalStore = useGlobalStore()
 const playerStore = usePlayerStore()
+const stateStore = useStateStore()
 const toast = useToast()
 
 /* Lifecycle Hooks */
@@ -61,34 +66,41 @@ onBeforeMount(() => {
 })
 
 /* Functions */
+function clicked(card: HearthstoneCard, event: any): void {
+  // Sell card if shop
+  if (globalStore.events.event?.type === EVENT_TYPES.SHOP) {
+    // Check if a deck needs this card
+    const checkSellable = (cl: Class): boolean => {
+      const copy = [...playerStore.cards]
+      copy.splice(copy.indexOf(card), 1)
+      const sellable = cardStore.filter(copy, classQueryParams([cl]), 'some').length >= 30
 
-function sellCard(card: HearthstoneCard, event: any): void {
-  // Check if shop
-  if (globalStore.events.event?.type !== EVENT_TYPES.SHOP) return
+      if (!sellable) {
+        errorToast(toast, `You need this card for your ${cl.name} deck`)
+      }
 
-  // Check if a deck needs this card
-  const checkSellable = (cl: Class): boolean => {
-    const copy = [...playerStore.cards]
-    copy.splice(copy.indexOf(card), 1)
-    const sellable = cardStore.filter(copy, classQueryParams([cl]), 'some').length >= 30
-
-    if (!sellable) {
-      errorToast(toast, `You need this card for your ${cl.name} deck`)
+      return sellable
     }
 
-    return sellable
-  }
-
-  if (card.classId === CLASSES.NEUTRAL.id) {
-    for (const cl of globalStore.classes.classes) {
+    if (card.classId === CLASSES.NEUTRAL.id) {
+      for (const cl of globalStore.classes.classes) {
+        if (!checkSellable(cl)) return
+      }
+    } else {
+      const cl = getClassById(card.classId)
       if (!checkSellable(cl)) return
     }
-  } else {
-    const cl = getClassById(card.classId)
-    if (!checkSellable(cl)) return
+
+    cardPopoverRef.value?.popoverHide(event)
+    playerStore.sellCard(card)
+    return
   }
 
-  cardPopoverRef.value?.popoverHide(event)
-  playerStore.sellCard(card)
+  // Add card to deck if deck
+  if (stateStore.currentState === STATES.DECK) {
+    playerStore.deckFull() || playerStore.isMaxInDeck(card) || !playerStore.isDeckClass(card)
+      ? errorToast(toast, `Can't add this card to the deck`)
+      : playerStore.addToDeck(card)
+  }
 }
 </script>

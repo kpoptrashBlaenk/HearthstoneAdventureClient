@@ -17,7 +17,7 @@
         <div class="text-shadow absolute top-5.5 right-6.5 text-center text-2xl font-bold">5</div>
       </div>
     </div>
-    <Button raised @click="$emit('next')"><span class="text-2xl font-semibold">Next</span></Button>
+    <Button raised @click="next()"><span class="text-2xl font-semibold">Next</span></Button>
   </div>
 
   <Toast />
@@ -34,7 +34,7 @@ import { Button, Toast, useToast } from 'primevue'
 import { onBeforeMount, ref } from 'vue'
 
 /* Emits */
-defineEmits(['next'])
+const emit = defineEmits(['next'])
 
 /* Const */
 const cardStore = useCardStore()
@@ -74,5 +74,9 @@ function refresh(): void {
   }
 
   shopCards.value = sortCards(cardsToSell)
+}
+
+function next(): void {
+  emit('next')
 }
 </script>

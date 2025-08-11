@@ -90,8 +90,8 @@ function stateSetter(): void {
 
   if (stateStore.currentState === STATES.BASIC_DECK) {
     switchEventComponent('Events', 'Events')
-    useGlobalStore().incrementEvent()
     stateStore.setEventState()
+    checkEndRound()
     return
   }
 
@@ -110,6 +110,20 @@ function stateSetter(): void {
     playerStore.resetBoughtCards()
     switchEventComponent('Events', 'Events')
     stateStore.setEventState()
+    checkEndRound()
+    return
+  }
+
+  if (stateStore.currentState === STATES.DECK) {
+    switchEventComponent('Battle', 'Battle')
+    stateStore.setBattleState()
+    return
+  }
+
+  if (stateStore.currentState === STATES.BATTLE) {
+    switchEventComponent('Events', 'Events')
+    stateStore.setEventState()
+    checkEndRound()
     return
   }
 }
@@ -136,5 +150,13 @@ async function switchEventComponent(component: string, title: string): Promise<v
     eventCardContent.value = module.default
     eventTransition.value = false
   }, TRANSITION_DURATION)
+}
+
+function checkEndRound(): void {
+  if (globalStore.isEndRound()) {
+    switchEventComponent('Deck', 'Your Deck')
+    stateStore.setDeckState()
+    return
+  }
 }
 </script>
