@@ -1,13 +1,10 @@
 <template>
-  <div class="flex items-center gap-3">
-    Events:
-    <div class="flex">
-      <div
-        v-for="(index, event) in globalStore.events.max"
-        class="border-gold h-5 w-10"
-        :class="index <= globalStore.events.current ? 'bg-purple-light' : 'bg-purple-dark'"
-      ></div>
-    </div>
+  <div class="flex">
+    <div
+      v-for="(index, event) in globalStore.events.max"
+      class="border-gold h-5 w-10"
+      :class="index <= globalStore.events.current ? 'bg-purple-light' : 'bg-purple-dark'"
+    ></div>
   </div>
 </template>
 

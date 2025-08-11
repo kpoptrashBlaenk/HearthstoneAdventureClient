@@ -1,8 +1,11 @@
 <template>
-  <div class="flex items-center gap-3">
-    Health:
-    <div class="pb-2" style="width: 70px">
-      <Chart type="doughnut" :data="chartData" :options="chartOptions" />
+  <div class="relative py-1">
+    <img
+      src="https://d2q63o9r0h0ohi.cloudfront.net/images/card-gallery/icon_health_68x68_@2x-741dbd5879b51f555cb381efb446bfcf9ac4c87a7a3ea7dc758cf88af53ce9444b897d26fe27f40d0bfa0d17d03ec508e916948d236cec16724fa89d6fbfa4e2.png"
+      class="h-14"
+    />
+    <div class="text-shadow absolute inset-0 top-4 left-0 flex items-center justify-center text-3xl font-bold">
+      {{ globalStore.health.current }}
     </div>
   </div>
 </template>
@@ -10,45 +13,7 @@
 <script setup lang="ts">
 /* Import */
 import { useGlobalStore } from '@/store/globalStore'
-import { Chart as ChartJS, type ChartData, type ChartOptions, type Plugin } from 'chart.js'
-import Chart from 'primevue/chart'
-import { computed, ref } from 'vue'
 
 /* Const */
 const globalStore = useGlobalStore()
-const centerTextPlugin: Plugin = {
-  id: 'healthText',
-  afterDraw(chart) {
-    const { ctx, width, height } = chart
-    ctx.save()
-    ctx.font = 'bold 20px "Baloo 2"'
-    ctx.fillStyle = getDocumentPropertyValue('--beige')
-    ctx.textAlign = 'center'
-    ctx.textBaseline = 'middle'
-    ctx.fillText(globalStore.health.current.toString(), width / 2, height / 2 + 8)
-    ctx.restore()
-  },
-}
-ChartJS.register(centerTextPlugin)
-const chartData = computed<ChartData>(() => ({
-  datasets: [
-    {
-      data: [globalStore.health.current, globalStore.health.max - globalStore.health.current],
-      backgroundColor: ['#ff0000', getDocumentPropertyValue('--brown-dark')],
-      borderColor: getDocumentPropertyValue('--gold-dark'),
-    },
-  ],
-}))
-const chartOptions = ref<ChartOptions>({
-  plugins: {
-    tooltip: {
-      enabled: false,
-    },
-  },
-})
-
-/* Functions */
-function getDocumentPropertyValue(value: string): string {
-  return getComputedStyle(document.documentElement).getPropertyValue(value)
-}
 </script>
