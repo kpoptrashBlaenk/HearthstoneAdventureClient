@@ -1,6 +1,9 @@
 <template>
-  <div class="pb-2" style="width: 70px">
-    <Chart type="doughnut" :data="chartData" :options="chartOptions" />
+  <div class="flex items-center gap-3">
+    Health:
+    <div class="pb-2" style="width: 70px">
+      <Chart type="doughnut" :data="chartData" :options="chartOptions" />
+    </div>
   </div>
 </template>
 
@@ -32,7 +35,7 @@ const chartData = computed<ChartData>(() => ({
     {
       data: [globalStore.health.current, globalStore.health.max - globalStore.health.current],
       backgroundColor: ['#ff0000', getDocumentPropertyValue('--brown-dark')],
-      borderColor: getDocumentPropertyValue('--gold'),
+      borderColor: getDocumentPropertyValue('--gold-dark'),
     },
   ],
 }))

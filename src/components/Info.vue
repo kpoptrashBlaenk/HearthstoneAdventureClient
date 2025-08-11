@@ -1,8 +1,8 @@
 <template>
   <div class="p-card w-full">
-    <div class="flex items-center justify-start gap-20 ps-10 text-lg">
-      <div>Round: {{ globalStore.events.round }}-{{ globalStore.events.current }}/{{ globalStore.events.max }}</div>
-      <div class="flex items-center gap-3">Health: <Health /></div>
+    <div class="flex items-center justify-start gap-10 ps-10 text-2xl">
+      <Round />
+      <Health />
       <div>Gold: {{ playerStore.gold }}</div>
     </div>
   </div>
@@ -13,6 +13,7 @@
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import Health from './partials/Health.vue'
+import Round from './partials/Round.vue'
 
 /* Const */
 const globalStore = useGlobalStore()

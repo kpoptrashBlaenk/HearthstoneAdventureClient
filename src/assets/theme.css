@@ -38,6 +38,12 @@ body {
 .bg-legendary {
   background-color: var(--legendary);
 }
+.bg-purple-light {
+  background-color: var(--purple-light);
+}
+.bg-purple-dark {
+  background-color: var(--purple-dark);
+}
 
 /* Button */
 .p-button {

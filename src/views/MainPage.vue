@@ -71,12 +71,14 @@ function stateSetter(): void {
   if (stateStore.currentState === STATES.START) {
     swtichBaseComponent('Settings', 'Settings')
     stateStore.setSettingsState()
+    stateSetter()
     return
   }
 
   if (stateStore.currentState === STATES.SETTINGS) {
     swtichBaseComponent('Classes', 'Classes')
     stateStore.setClassesState()
+    stateSetter()
     return
   }
 
@@ -85,6 +87,7 @@ function stateSetter(): void {
     switchEventComponent('StartEvent', 'Start')
     showInfo.value = true
     stateStore.setBasicDeckState()
+    stateSetter()
     return
   }
 

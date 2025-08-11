@@ -1,21 +1,22 @@
 import type { Class, Event } from '@/types/types'
+import { CLASSES } from '@/utils/constants'
 import { defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     classes: {
-      number: 0,
-      classes: [] as Class[],
+      number: 1,
+      classes: [CLASSES.ROGUE] as Class[],
     },
     health: {
-      current: 0,
-      max: 0,
+      current: 15,
+      max: 15,
     },
     events: {
       round: 1,
       event: null as Event | null,
       current: 0,
-      max: 1,
+      max: 5,
     },
   }),
 
