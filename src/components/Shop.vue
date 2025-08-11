@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="mt-3 grid justify-center lg:grid-cols-2 xl:grid-cols-3">
+    <div class="mt-3 grid justify-center md:grid-cols-2 lg:grid-cols-3">
       <div
         v-for="card in [...shopCards, ...playerStore.soldCards]"
         v-tooltip="{ value: card.flavorText, escape: false }"
