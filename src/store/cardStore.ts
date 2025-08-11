@@ -87,10 +87,7 @@ export const useCardStore = defineStore('card', {
         cards.push(randomCard)
       }
 
-      return cards.sort((a, b) => {
-        if (a.manaCost !== b.manaCost) return a.manaCost - b.manaCost
-        return a.name.localeCompare(b.name)
-      })
+      return cards
     },
   },
 })

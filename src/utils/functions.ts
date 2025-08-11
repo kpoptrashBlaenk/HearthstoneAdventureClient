@@ -68,3 +68,34 @@ export function getClassById(classId: number): Class {
 export function getRarityById(rarityId: number): number {
   return Object.values(RARITY_ID).find((rarity) => rarity === rarityId)!
 }
+
+/**
+ * Get the query params to filter for cards from all selected classes and neutrals
+ *
+ * @param classes Selected classes
+ * @returns Query params for classes including enutrals
+ */
+export function classQueryParams(classes: Class[]): QueryParam[] {
+  const params = classes.map((cl) => ({
+    key: 'classId' as keyof HearthstoneCard,
+    value: cl.id,
+  }))
+
+  return [...params, { key: 'classId', value: CLASSES.NEUTRAL.id }]
+}
+
+/**
+ * Sorts cards by name, then rarity, then mana cost
+ *
+ * @param cards Cards to sort
+ * @returns Sorted cards
+ */
+export function sortCards(cards: HearthstoneCard[]): HearthstoneCard[] {
+  return cards.sort((a, b) => {
+    if (a.manaCost !== b.manaCost) return a.manaCost - b.manaCost
+
+    if (a.rarityId !== b.rarityId) return a.rarityId - b.rarityId
+
+    return a.name.localeCompare(b.name)
+  })
+}

@@ -1,7 +1,14 @@
 <template>
-  <div class="flex-column mt-3 h-full justify-center px-10">
+  <div class="mt-5 flex flex-wrap justify-center">
     <img
       v-for="event in events"
+      v-tooltip="{
+        value: `${event.image
+          .split('_')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')} ${event.tooltip}`,
+        escape: false,
+      }"
       :src="`events/${event.image}.webp`"
       class="drop-shadow-gold -mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
       @click="emitNext(event)"

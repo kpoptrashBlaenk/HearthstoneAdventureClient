@@ -1,18 +1,21 @@
 import type { Class, Event } from '@/types/types'
-import { CLASSES } from '@/utils/constants'
 import { defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     classes: {
-      number: 1,
-      classes: [CLASSES.ROGUE] as Class[],
+      number: 0,
+      classes: [] as Class[],
     },
-    health: 15,
+    health: {
+      current: 0,
+      max: 0,
+    },
     events: {
+      round: 1,
       event: null as Event | null,
       current: 0,
-      max: 5,
+      max: 0,
     },
   }),
 
@@ -27,10 +30,11 @@ export const useGlobalStore = defineStore('global', {
 
     // Health
     setHealth(value: number): void {
-      this.health = value
+      this.health.current = value
+      this.health.max = value
     },
     changeHealth(value: number): void {
-      this.health += value
+      this.health.current += value
     },
 
     // Events
@@ -48,7 +52,16 @@ export const useGlobalStore = defineStore('global', {
 
       this.events.current++
     },
+    incrementRound(): void {
+      if (this.events.current === this.events.max) {
+        this.resetEvents()
+        return
+      }
+
+      this.events.current++
+    },
     resetEvents(): void {
+      this.events.round++
       this.events.current = 0
     },
   },

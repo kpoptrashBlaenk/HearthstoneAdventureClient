@@ -24,8 +24,9 @@
           v-for="(card, index) in cards"
           class="border-gold relative mt-[1px] flex h-5 cursor-pointer rounded-2xl"
           :class="{ hidden: card === cards[index - 1] }"
-          @mouseenter="togglePopover($event, card.image)"
-          @mouseleave="togglePopover($event, card.image)"
+          @mouseenter="popoverShow($event, card.image)"
+          @mouseleave="popoverHide($event)"
+          @click="sellCard(card, $event)"
         >
           <!-- Mana Crystal -->
           <img
@@ -64,6 +65,8 @@
       </template>
     </Card>
   </div>
+
+  <Toast />
 </template>
 
 <script setup lang="ts">
@@ -71,11 +74,14 @@
 import { useCardStore } from '@/store/cardStore'
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
-import type { RarityId } from '@/types/types'
+import type { Class, HearthstoneCard, RarityId } from '@/types/types'
 import { CLASSES, RARITY_ID } from '@/utils/constants'
-import { getClassById } from '@/utils/functions'
-import { Card, Popover } from 'primevue'
-import { onMounted, ref } from 'vue'
+import { classQueryParams, errorToast, getClassById } from '@/utils/functions'
+import { Card, Popover, Toast, useToast } from 'primevue'
+import { onBeforeMount, ref } from 'vue'
+
+/* Emits */
+defineEmits(['next']) // Unused, only here to avoid warning that component has no @next
 
 /* Const */
 const cardPopoverRef = ref()
@@ -83,17 +89,22 @@ const cardPreviewUrl = ref<string>()
 const cardStore = useCardStore()
 const globalStore = useGlobalStore()
 const playerStore = usePlayerStore()
+const toast = useToast()
 
 /* Lifecycle Hooks */
-onMounted(() => {
+onBeforeMount(() => {
   playerStore.setCards(cardStore.createBasicDeck(globalStore.classes.classes))
   playerStore.groupByClass()
 })
 
 /* Functions */
-function togglePopover(event: any, image: string): void {
+function popoverShow(event: any, image: string): void {
   cardPreviewUrl.value = image
-  cardPopoverRef.value.toggle(event)
+  cardPopoverRef.value.show(event)
+}
+
+function popoverHide(event: any): void {
+  cardPopoverRef.value.hide(event)
 }
 
 function rarityColor(rarity: RarityId): string {
@@ -109,5 +120,32 @@ function rarityColor(rarity: RarityId): string {
     default:
       return ''
   }
+}
+
+function sellCard(card: HearthstoneCard, event: any): void {
+  // Check if a deck needs this card
+  const checkSellable = (cl: Class): boolean => {
+    const copy = [...playerStore.cards]
+    copy.splice(copy.indexOf(card), 1)
+    const sellable = cardStore.filter(copy, classQueryParams([cl]), 'some').length >= 30
+
+    if (!sellable) {
+      errorToast(toast, `You need this card for your ${cl.name} deck`)
+    }
+
+    return sellable
+  }
+
+  if (card.classId === CLASSES.NEUTRAL.id) {
+    for (const cl of globalStore.classes.classes) {
+      if (!checkSellable(cl)) return
+    }
+  } else {
+    const cl = getClassById(card.classId)
+    if (!checkSellable(cl)) return
+  }
+
+  popoverHide(event)
+  playerStore.sellCard(card)
 }
 </script>

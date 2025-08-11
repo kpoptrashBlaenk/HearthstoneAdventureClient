@@ -28,19 +28,19 @@ export const EVENTS = {
   BARTENDER_BOB: {
     id: 1,
     image: 'bartender_bob',
-    tooltip: 'Offers a shop with any cards!',
+    tooltip: 'offers a shop with any card!',
     type: 'SHOP',
   },
   BARTENDER_ROBERTA: {
     id: 2,
     image: 'bartender_roberta',
-    tooltip: 'Offers a shop with any cards!',
+    tooltip: 'offers a shop with any card!',
     type: 'SHOP',
   },
   SPARKLE: {
     id: 3,
     image: 'sparkle',
-    tooltip: 'Offers a shop with any cards!',
+    tooltip: 'offers a shop with any card!',
     type: 'SHOP',
   },
 }

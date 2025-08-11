@@ -58,6 +58,15 @@ body {
   text-shadow: var(--text-shadow);
 }
 
+/* Tooltip */
+.p-tooltip-text {
+  font-family: 'Baloo 2' !important;
+  font-weight: 600;
+}
+.p-tooltip-arrow {
+  display: none;
+}
+
 /* Popover */
 .p-popover {
   pointer-events: none;
@@ -133,6 +142,11 @@ body {
 
   /* Text */
   --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+
+  /* Tooltip */
+  --p-tooltip-shadow: var(--shadow-sm) var(--gold) !important;
+  --p-tooltip-background: var(--brown-light) !important;
+  --p-tooltip-color: var(--beige) !important;
 
   /* Popover */
   --p-popover-background: transparent !important;
