@@ -1,4 +1,4 @@
-import type { ClassKey, EventKey, RarityIdKey } from '@/types/types'
+import type { ClassKey, EventKey, EventType, RarityIdKey } from '@/types/types'
 
 export const CLASSES = {
   DEATH_KNIGHT: { id: 1, name: 'Death Knight' },
@@ -45,6 +45,11 @@ export const EVENTS = {
   },
 }
 export const EVENT_KEYS = Object.keys(CLASSES) as EventKey[]
+
+export const EVENT_TYPES = {
+  SHOP: 'SHOP',
+}
+export const EVENT_TYPE_KEYS = Object.keys(CLASSES) as EventType[]
 
 export const STATES = {
   START: 'START',
