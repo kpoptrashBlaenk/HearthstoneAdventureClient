@@ -2,10 +2,10 @@
   <div class="mx-auto mt-2 flex h-[98vh] w-[98vw] flex-col items-center gap-5 p-0">
     <Info v-if="showInfo" />
     <div class="flex h-full w-full items-center justify-center">
-      <div class="mx-1 my-auto flex items-center gap-10">
+      <div class="mx-1 my-auto flex items-start gap-10">
         <!-- Base Card -->
         <Card
-          class="h-full transition-opacity ease-in-out"
+          class="transition-opacity ease-in-out"
           :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': baseTransition }]"
         >
           <template #title>
