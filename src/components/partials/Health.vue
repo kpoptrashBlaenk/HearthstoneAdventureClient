@@ -5,7 +5,7 @@
       class="h-14"
     />
     <div class="text-shadow absolute inset-0 top-4 left-0 flex items-center justify-center text-3xl font-bold">
-      {{ globalStore.health.current }}
+      {{ globalStore.health.player.current }}
     </div>
   </div>
 </template>

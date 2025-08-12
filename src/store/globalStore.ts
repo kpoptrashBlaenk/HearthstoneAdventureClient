@@ -9,8 +9,14 @@ export const useGlobalStore = defineStore('global', {
       classes: [CLASSES.ROGUE] as Class[],
     },
     health: {
-      current: 15,
-      max: 15,
+      player: {
+        current: 15,
+        max: 15,
+      },
+      opponent: {
+        current: 15,
+        max: 15,
+      },
     },
     events: {
       round: 1,
@@ -31,11 +37,13 @@ export const useGlobalStore = defineStore('global', {
 
     // Health
     setHealth(value: number): void {
-      this.health.current = value
-      this.health.max = value
+      this.health.player.current = value
+      this.health.player.max = value
+      this.health.opponent.current = value
+      this.health.opponent.max = value
     },
-    changeHealth(value: number): void {
-      this.health.current += value
+    changeHealth(player: 'player' | 'opponent', value: number): void {
+      this.health[player].current = Math.max(0, this.health[player].current + value)
     },
 
     // Events

@@ -5,6 +5,7 @@
       <div class="mx-1 my-auto flex items-start gap-10">
         <!-- Base Card -->
         <Card
+          v-if="baseCardContent"
           class="transition-opacity ease-in-out"
           :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': baseTransition }]"
         >
@@ -43,7 +44,7 @@ import { useCardStore } from '@/store/cardStore'
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { useStateStore } from '@/store/stateStore'
-import { STATES } from '@/utils/constants'
+import { CLASSES, STATES } from '@/utils/constants'
 import { Card } from 'primevue'
 import { onMounted, ref, shallowRef, type Component } from 'vue'
 
@@ -71,14 +72,12 @@ function stateSetter(): void {
   if (stateStore.currentState === STATES.START) {
     swtichBaseComponent('Settings', 'Settings')
     stateStore.setSettingsState()
-    stateSetter()
     return
   }
 
   if (stateStore.currentState === STATES.SETTINGS) {
     swtichBaseComponent('Classes', 'Classes')
     stateStore.setClassesState()
-    stateSetter()
     return
   }
 
@@ -87,7 +86,6 @@ function stateSetter(): void {
     switchEventComponent('StartEvent', 'Start')
     showInfo.value = true
     stateStore.setBasicDeckState()
-    stateSetter()
     return
   }
 
@@ -124,6 +122,10 @@ function stateSetter(): void {
   }
 
   if (stateStore.currentState === STATES.BATTLE) {
+    if (globalStore.health.player.current <= 0 || globalStore.health.opponent.current <= 0) {
+      return
+    }
+
     switchEventComponent('Events', 'Events')
     stateStore.setEventState()
     checkEndRound()
@@ -131,26 +133,26 @@ function stateSetter(): void {
   }
 }
 
-async function swtichBaseComponent(component: string, title: string): Promise<void> {
-  const module = await import(`../components/${component}.vue`)
+async function swtichBaseComponent(component?: string, title?: string): Promise<void> {
+  const module = component ? await import(`../components/${component}.vue`) : undefined
 
   baseTransition.value = true
 
   setTimeout(() => {
-    baseCardTitle.value = title
-    baseCardContent.value = module.default
+    baseCardTitle.value = title ?? ''
+    baseCardContent.value = module?.default ?? undefined
     baseTransition.value = false
   }, TRANSITION_DURATION)
 }
 
-async function switchEventComponent(component: string, title: string): Promise<void> {
-  const module = await import(`../components/${component}.vue`)
+async function switchEventComponent(component?: string, title?: string): Promise<void> {
+  const module = component ? await import(`../components/${component}.vue`) : undefined
 
   eventTransition.value = true
 
   setTimeout(() => {
-    eventCardTitle.value = title
-    eventCardContent.value = module.default
+    eventCardTitle.value = title ?? ''
+    eventCardContent.value = module?.default ?? undefined
     eventTransition.value = false
   }, TRANSITION_DURATION)
 }
