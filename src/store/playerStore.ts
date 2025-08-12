@@ -1,6 +1,6 @@
 import type { HearthstoneCard } from '@/types/types'
 import { CLASSES, RARITY_ID } from '@/utils/constants'
-import { sortCards } from '@/utils/functions'
+import { cardPrice, sortCards } from '@/utils/functions'
 import { defineStore } from 'pinia'
 
 export const usePlayerStore = defineStore('player', {
@@ -50,7 +50,7 @@ export const usePlayerStore = defineStore('player', {
       return true
     },
     sellCard(card: HearthstoneCard): void {
-      this.gold += 5
+      this.gold += cardPrice(card, 'cards')
       this.cards.splice(this.cards.indexOf(card), 1)
 
       // If card was bought, remove it from bought, if not, add it to sold

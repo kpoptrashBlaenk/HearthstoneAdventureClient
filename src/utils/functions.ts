@@ -99,3 +99,16 @@ export function sortCards(cards: HearthstoneCard[]): HearthstoneCard[] {
     return a.name.localeCompare(b.name)
   })
 }
+
+export function cardPrice(card: HearthstoneCard, context: 'shop' | 'cards'): number {
+  const rarityPrice = {
+    [RARITY_ID.COMMON]: 2,
+    [RARITY_ID.RARE]: 4,
+    [RARITY_ID.EPIC]: 6,
+    [RARITY_ID.LEGENDARY]: 8,
+  }
+
+  const price = rarityPrice[card.rarityId] * (context === 'cards' ? 0.5 : 1)
+
+  return price
+}

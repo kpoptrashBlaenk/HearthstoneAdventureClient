@@ -65,6 +65,7 @@ const TRANSITION_DURATION = 200
 /* Lifecycle Hooks */
 onMounted(() => {
   cardStore.init()
+  console.log(cardStore.filter(cardStore.cards, [{key: 'name', value: 'Horn of Winter'}]))
   stateSetter()
 })
 
