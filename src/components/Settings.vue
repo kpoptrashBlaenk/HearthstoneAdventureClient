@@ -35,8 +35,8 @@ import { ref } from 'vue'
 const emit = defineEmits(['next'])
 
 /* Const */
-const classNumber = ref<number>(30)
-const eventsNumber = ref<number>(7)
+const classNumber = ref<number>(20)
+const eventsNumber = ref<number>(5)
 const globalStore = useGlobalStore()
 const healthNumber = ref<number>(15)
 const toast = useToast()
