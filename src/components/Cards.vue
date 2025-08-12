@@ -44,7 +44,7 @@ import { type CardPopoverRef, type Class, type HearthstoneCard } from '@/types/t
 import { CLASSES, EVENT_TYPES, STATES } from '@/utils/constants'
 import { classQueryParams, errorToast, getClassById } from '@/utils/functions'
 import { Card, Toast, useToast } from 'primevue'
-import { onBeforeMount, ref } from 'vue'
+import { ref } from 'vue'
 import CardList from './partials/CardList.vue'
 import CardPopover from './partials/CardPopover.vue'
 
@@ -58,12 +58,6 @@ const globalStore = useGlobalStore()
 const playerStore = usePlayerStore()
 const stateStore = useStateStore()
 const toast = useToast()
-
-/* Lifecycle Hooks */
-onBeforeMount(() => {
-  playerStore.setCards(cardStore.createBasicDeck(globalStore.classes.classes))
-  playerStore.groupByClass()
-})
 
 /* Functions */
 function clicked(card: HearthstoneCard, event: any): void {

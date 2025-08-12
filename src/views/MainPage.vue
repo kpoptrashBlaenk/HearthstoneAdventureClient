@@ -44,7 +44,7 @@ import { useCardStore } from '@/store/cardStore'
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { useStateStore } from '@/store/stateStore'
-import { CLASSES, STATES } from '@/utils/constants'
+import { STATES } from '@/utils/constants'
 import { Card } from 'primevue'
 import { onMounted, ref, shallowRef, type Component } from 'vue'
 
@@ -57,6 +57,7 @@ const eventCardContent = shallowRef<Component>()
 const eventCardTitle = ref<string>('Start')
 const eventTransition = ref<boolean>(false)
 const globalStore = useGlobalStore()
+const playerStore = usePlayerStore()
 const showInfo = ref<boolean>(false)
 const stateStore = useStateStore()
 const TRANSITION_DURATION = 200
@@ -82,6 +83,8 @@ function stateSetter(): void {
   }
 
   if (stateStore.currentState === STATES.CLASSES) {
+    playerStore.setCards(cardStore.createBasicDeck(globalStore.classes.classes))
+    playerStore.groupByClass()
     swtichBaseComponent('Cards', 'Your Cards')
     switchEventComponent('StartEvent', 'Start')
     showInfo.value = true
@@ -106,7 +109,6 @@ function stateSetter(): void {
   }
 
   if (stateStore.currentState === STATES.SHOP) {
-    const playerStore = usePlayerStore()
     playerStore.resetSoldCards()
     playerStore.resetBoughtCards()
     switchEventComponent('Events', 'Events')
@@ -117,16 +119,19 @@ function stateSetter(): void {
 
   if (stateStore.currentState === STATES.DECK) {
     switchEventComponent('Battle', 'Battle')
+    swtichBaseComponent(undefined, undefined)
     stateStore.setBattleState()
     return
   }
 
   if (stateStore.currentState === STATES.BATTLE) {
     if (globalStore.health.player.current <= 0 || globalStore.health.opponent.current <= 0) {
+      switchEventComponent('Ending', globalStore.health.player.current <= 0 ? 'Defeat!' : 'Victory!')
       return
     }
 
     switchEventComponent('Events', 'Events')
+    swtichBaseComponent('Cards', 'Your Cards')
     stateStore.setEventState()
     checkEndRound()
     return

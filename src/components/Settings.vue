@@ -54,13 +54,13 @@ function start(): void {
   }
 
   // Check health
-  if (!healthNumber.value || eventsNumber.value < 1) {
+  if (!healthNumber.value || healthNumber.value < 1) {
     errorToast(toast, `Health not valid: ${healthNumber.value}`)
     return
   }
 
   // Check events number
-  if (!eventsNumber.value || eventsNumber.value < 1) {
+  if (!eventsNumber.value || eventsNumber.value < 0) {
     errorToast(toast, `Events number not valid: ${eventsNumber.value}`)
     return
   }

@@ -4,7 +4,12 @@
     v-for="(card, index) in cards"
     class="border-gold relative mt-[1px] flex h-5 cursor-pointer rounded-2xl"
     :class="{ hidden: card === cards[index - 1] }"
-    :style="{ filter: context === 'CARDS' && playerStore.isMaxInDeck(card) ? 'brightness(0.4)' : '' }"
+    :style="{
+      filter:
+        context === 'CARDS' && playerStore.isMaxInDeck(card) && useStateStore().currentState === STATES.DECK
+          ? 'brightness(0.4)'
+          : '',
+    }"
     @mouseenter="emit('popoverShow', $event, card.image)"
     @mouseleave="emit('popoverHide', $event)"
     @click="clicked(card, $event)"
@@ -48,8 +53,9 @@
 <script setup lang="ts">
 /* Import */
 import { usePlayerStore } from '@/store/playerStore'
+import { useStateStore } from '@/store/stateStore'
 import type { HearthstoneCard, RarityId } from '@/types/types'
-import { RARITY_ID } from '@/utils/constants'
+import { RARITY_ID, STATES } from '@/utils/constants'
 
 /* Emits */
 const emit = defineEmits<{
