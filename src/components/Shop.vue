@@ -1,6 +1,17 @@
 <template>
   <div class="flex flex-col">
-    <div class="mt-3 grid justify-center md:grid-cols-2 lg:grid-cols-3">
+    <Button class="text-3xl" :disabled="playerStore.gold < 2 || refreshed" @click="refreshButton()">
+      <div class="relative -me-1 -mt-0.5">
+        <img class="h-5" :src="'icons/gold.png'" />
+        <div class="text-shadow absolute inset-0 top-0.5 flex items-center justify-center text-sm font-bold">2</div>
+      </div>
+      <span> Refresh </span>
+    </Button>
+
+    <div
+      class="mt-3 grid justify-center md:grid-cols-2 lg:grid-cols-3"
+      :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': transition }]"
+    >
       <div
         v-for="card in [...shopCards, ...playerStore.soldCards]"
         v-tooltip="{ value: card.flavorText, escape: false }"
@@ -38,8 +49,11 @@ const emit = defineEmits(['next'])
 /* Const */
 const globalStore = useGlobalStore()
 const playerStore = usePlayerStore()
+const refreshed = ref<boolean>(false)
 const shopCards = ref<HearthstoneCard[]>([])
 const toast = useToast()
+const transition = ref<boolean>(false)
+const TRANSITION_DURATION = 200
 
 /* Lifecycle Hooks */
 onBeforeMount(() => {
@@ -72,6 +86,20 @@ function refresh(): void {
   }
 
   shopCards.value = sortCards(cardsToSell)
+}
+
+function refreshButton(): void {
+  if (playerStore.gold < 2 || refreshed.value) {
+    errorToast(toast, `You can't refresh!`)
+    return
+  }
+
+  transition.value = true
+  setTimeout(() => (transition.value = false), TRANSITION_DURATION)
+
+  playerStore.gold -= 2
+  refreshed.value = true
+  refresh()
 }
 
 function next(): void {
