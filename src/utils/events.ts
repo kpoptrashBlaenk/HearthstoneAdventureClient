@@ -593,6 +593,126 @@ export const EVENTS = {
       GET: 'Get a random <b><i>Protoss</i></b> card!',
     },
   },
+  DEATH_KNIGHT: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.DEATH_KNIGHT,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Death Knight</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Death Knight</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Death Knight</i></b> cards!',
+      GET: 'Get a random <b><i>Death Knight</i></b> card!',
+    },
+  },
+  DEMON_HUNTER: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.DEMON_HUNTER,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Demon Hunter</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Demon Hunter</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Demon Hunter</i></b> cards!',
+      GET: 'Get a random <b><i>Demon Hunter</i></b> card!',
+    },
+  },
+  DRUID: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.DRUID,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Druid</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Druid</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Druid</i></b> cards!',
+      GET: 'Get a random <b><i>Druid</i></b> card!',
+    },
+  },
+  HUNTER: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.HUNTER,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Hunter</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Hunter</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Hunter</i></b> cards!',
+      GET: 'Get a random <b><i>Hunter</i></b> card!',
+    },
+  },
+  MAGE: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.MAGE,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Mage</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Mage</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Mage</i></b> cards!',
+      GET: 'Get a random <b><i>Mage</i></b> card!',
+    },
+  },
+  PALADIN: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.PALADIN,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Paladin</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Paladin</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Paladin</i></b> cards!',
+      GET: 'Get a random <b><i>Paladin</i></b> card!',
+    },
+  },
+  PRIEST: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.PRIEST,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Priest</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Priest</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Priest</i></b> cards!',
+      GET: 'Get a random <b><i>Priest</i></b> card!',
+    },
+  },
+  ROGUE: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.ROGUE,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Rogue</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Rogue</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Rogue</i></b> cards!',
+      GET: 'Get a random <b><i>Rogue</i></b> card!',
+    },
+  },
+  SHAMAN: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.SHAMAN,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Shaman</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Shaman</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Shaman</i></b> cards!',
+      GET: 'Get a random <b><i>Shaman</i></b> card!',
+    },
+  },
+  WARLOCK: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.WARLOCK,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Warlock</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Warlock</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Warlock</i></b> cards!',
+      GET: 'Get a random <b><i>Warlock</i></b> card!',
+    },
+  },
+  WARRIOR: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.WARRIOR,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Warrior</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Warrior</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Warrior</i></b> cards!',
+      GET: 'Get a random <b><i>Warrior</i></b> card!',
+    },
+  },
+  NEUTRAL: {
+    image: 'bartender_bob',
+    bucket: BUCKETS.CLASSES.NEUTRAL,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Neutral</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Neutral</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Neutral</i></b> cards!',
+      GET: 'Get a random <b><i>Neutral</i></b> card!',
+    },
+  },
   DEAL_DAMAGE: {
     image: 'bartender_bob',
     bucket: BUCKETS.CUSTOM.DEAL_DAMAGE,
