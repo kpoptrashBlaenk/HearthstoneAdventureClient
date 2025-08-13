@@ -105,15 +105,19 @@ function stateSetter(): void {
       case EVENT_TYPES.SHOP:
         switchEventComponent('Shop', globalStore.events.event?.tooltips.SHOP)
         stateStore.setShopState()
+        break
       case EVENT_TYPES.DISCOVER:
         switchEventComponent('Discover', globalStore.events.event?.tooltips.DISCOVER)
         stateStore.setShopState()
+        break
       case EVENT_TYPES.CHOOSE:
         switchEventComponent('Choose', globalStore.events.event?.tooltips.CHOOSE)
         stateStore.setShopState()
+        break
       case EVENT_TYPES.GET:
         switchEventComponent('Get', globalStore.events.event?.tooltips.GET)
         stateStore.setShopState()
+        break
       default:
         console.error(`globalStore.event.type not found: ${globalStore.events.type}`)
     }

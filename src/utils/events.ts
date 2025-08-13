@@ -819,7 +819,7 @@ export const EVENTS = {
       SHOP: 'Open a shop with <b><i>Map</i></b> cards!',
       DISCOVER: 'Discover 2 <b><i>Map</i></b> cards!',
       CHOOSE: 'Choose 1 of 2 <b><i>Map</i></b> cards!',
-      GET: 'Get a random <b><i>Map/b> card!',
+      GET: 'Get a random <b><i>Map</i></b> card!',
     },
   },
   SMOLDERING: {

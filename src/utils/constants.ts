@@ -145,6 +145,9 @@ export const STATES = {
   BASIC_DECK: 'BASIC_DECK',
   EVENT: 'EVENT',
   SHOP: 'SHOP',
+  DISCOVER: 'DISCOVER',
+  CHOOSE: 'CHOOSE',
+  GET: 'GET',
   DECK: 'DECK',
   BATTLE: 'BATTLE',
 }

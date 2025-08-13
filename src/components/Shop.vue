@@ -16,11 +16,12 @@
         v-for="card in [...shopCards, ...playerStore.soldCards]"
         v-tooltip="{ value: card.flavorText, escape: false }"
         class="relative -mt-4 w-40 transition-transform duration-200 ease-in-out"
-        :class="
+        :class="[
           playerStore.isBuyable(card, cardPrice(card, 'shop'))
             ? 'drop-shadow-gold cursor-pointer hover:scale-105 active:scale-110'
-            : 'cursor-default grayscale-100'
-        "
+            : 'cursor-default grayscale-100',
+          card.cardTypeId === CARD_TYPE_ID.LOCATION ? 'p-3' : '',
+        ]"
         @click="buy(card, cardPrice(card, 'shop'))"
       >
         <img :src="card.image" class="h-full object-contain" />
@@ -39,6 +40,7 @@
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { type HearthstoneCard } from '@/types/types'
+import { CARD_TYPE_ID } from '@/utils/constants'
 import { cardPrice, errorToast, sortCards } from '@/utils/functions'
 import { Button, Toast, useToast } from 'primevue'
 import { onBeforeMount, ref } from 'vue'

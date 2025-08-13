@@ -26,6 +26,15 @@ export const useStateStore = defineStore('state', {
     setShopState(): void {
       this.currentState = STATES.SHOP
     },
+    setDiscoverState(): void {
+      this.currentState = STATES.DISCOVER
+    },
+    setChooseState(): void {
+      this.currentState = STATES.CHOOSE
+    },
+    setGetState(): void {
+      this.currentState = STATES.GET
+    },
     setDeckState(): void {
       this.currentState = STATES.DECK
     },

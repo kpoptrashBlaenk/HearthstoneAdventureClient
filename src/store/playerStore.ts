@@ -20,7 +20,7 @@ export const usePlayerStore = defineStore('player', {
       if (this.gold < cost) return
 
       this.gold -= cost
-      this.cards.push(card)
+      this.addToCards(card)
 
       // If card was sold, remove it from sold, if not, add it to bought
       if (this.soldCards.includes(card)) {
@@ -34,7 +34,7 @@ export const usePlayerStore = defineStore('player', {
     isBuyable(card: HearthstoneCard, cost: number): boolean {
       const wasBought = this.boughtCards.filter((boughtCard) => boughtCard.id === card.id).length >= 1
       const noGold = this.gold < cost
-      const maxCards = this.cards.filter((c) => c.id === card.id).length >= (card.rarityId === RARITY_ID.LEGENDARY ? 1 : 2)
+      const maxCards = this.ownMaxCopies(card)
 
       if (wasBought || noGold || maxCards) return false
 
@@ -51,6 +51,13 @@ export const usePlayerStore = defineStore('player', {
         this.soldCards.push(card)
       }
 
+      this.cards = sortCards(this.cards)
+    },
+    ownMaxCopies(card: HearthstoneCard): boolean {
+      return this.cards.filter((c) => c.id === card.id).length >= (card.rarityId === RARITY_ID.LEGENDARY ? 1 : 2)
+    },
+    addToCards(card: HearthstoneCard): void {
+      this.cards.push(card)
       this.cards = sortCards(this.cards)
     },
 
