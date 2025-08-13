@@ -84,9 +84,13 @@ function next(card?: HearthstoneCard): void {
   // If it's the first card, then refresh
   if (!refreshed.value) {
     transition.value = true
-    setTimeout(() => (transition.value = false), TRANSITION_DURATION)
-    refreshed.value = true
-    refresh()
+    setTimeout(() => {
+      refreshed.value = true
+      refresh()
+
+      transition.value = false
+    }, TRANSITION_DURATION)
+
     return
   }
 

@@ -97,11 +97,13 @@ function refreshButton(): void {
   }
 
   transition.value = true
-  setTimeout(() => (transition.value = false), TRANSITION_DURATION)
+  setTimeout(() => {
+    playerStore.gold -= 2
+    refreshed.value = true
+    refresh()
 
-  playerStore.gold -= 2
-  refreshed.value = true
-  refresh()
+    transition.value = false
+  }, TRANSITION_DURATION)
 }
 
 function next(): void {
