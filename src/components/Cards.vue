@@ -4,7 +4,7 @@
 
   <div class="mt-3 flex flex-wrap justify-center gap-5">
     <!-- Card Lists -->
-    <Card v-for="[classId, cards] in Object.entries(playerStore.groupByClass())">
+    <Card v-for="[classId, cards] in Object.entries(cardStore.groupByClass(playerStore.cards))">
       <!-- Title -->
       <template #title>
         <div class="flex items-center">
@@ -41,7 +41,8 @@ import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { useStateStore } from '@/store/stateStore'
 import { type CardPopoverRef, type Class, type HearthstoneCard } from '@/types/types'
-import { CLASSES, EVENT_TYPES, STATES } from '@/utils/constants'
+import { CLASSES, STATES } from '@/utils/constants'
+import { EVENT_TYPES } from '@/utils/events'
 import { classQueryParams, errorToast, getClassById } from '@/utils/functions'
 import { Card, Toast, useToast } from 'primevue'
 import { ref } from 'vue'
@@ -62,7 +63,7 @@ const toast = useToast()
 /* Functions */
 function clicked(card: HearthstoneCard, event: any): void {
   // Sell card if shop
-  if (globalStore.events.event?.type === EVENT_TYPES.SHOP) {
+  if (globalStore.events.type === EVENT_TYPES.SHOP) {
     // Check if a deck needs this card
     const checkSellable = (cl: Class): boolean => {
       const copy = [...playerStore.cards]

@@ -40,6 +40,17 @@ export const useCardStore = defineStore('card', {
             return cardValue.map((v) => v).includes(param.value as number)
           }
 
+          // If searching in name or text
+          if (param.key === 'name' || param.key === 'text') {
+            const searchValues = Array.isArray(param.value) ? param.value : [param.value]
+            return searchValues.every((val) => (cardValue as string).toLowerCase().includes((val as string).toLowerCase()))
+          }
+
+          if (param.key === 'runeCost' && cardValue) {
+            //@ts-ignore
+            return cardValue[param.value] > 0
+          }
+
           // If searching in string/number/boolean
           return cardValue === param.value
         })
@@ -88,6 +99,21 @@ export const useCardStore = defineStore('card', {
       }
 
       return cards
+    },
+
+    groupByClass(cards: HearthstoneCard[]): Record<string, HearthstoneCard[]> {
+      return cards.reduce((result: Record<string, HearthstoneCard[]>, card: HearthstoneCard) => {
+        const classIds: number[] =
+          card.classId !== null && card.classId !== undefined ? [card.classId] : (card.multiClassIds ?? [])
+
+        for (const id of classIds) {
+          const key = id.toString()
+          if (!result[key]) result[key] = []
+          result[key].push(card)
+        }
+
+        return result
+      }, {})
     },
   },
 })

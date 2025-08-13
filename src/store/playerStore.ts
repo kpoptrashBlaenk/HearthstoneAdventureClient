@@ -16,15 +16,6 @@ export const usePlayerStore = defineStore('player', {
       this.cards = sortCards(cards)
     },
 
-    groupByClass(): Record<string, HearthstoneCard[]> {
-      return this.cards.reduce((result: Record<string, HearthstoneCard[]>, card: HearthstoneCard) => {
-        const key = card.classId.toString()
-        if (!result[key]) result[key] = []
-        result[key].push(card)
-        return result
-      }, {})
-    },
-
     buyCard(card: HearthstoneCard, cost: number): void {
       if (this.gold < cost) return
 

@@ -1,4 +1,5 @@
-import type { Class, Event } from '@/types/types'
+import type { Class, Event, EventType, HearthstoneCard } from '@/types/types'
+import { EVENT_TYPES } from '@/utils/events'
 import { defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', {
@@ -19,6 +20,8 @@ export const useGlobalStore = defineStore('global', {
     },
     events: {
       round: 1,
+      cards: [] as HearthstoneCard[],
+      type: null as EventType | null,
       event: null as Event | null,
       current: -1,
       max: 0,
@@ -49,8 +52,17 @@ export const useGlobalStore = defineStore('global', {
     setEvents(value: number): void {
       this.events.max = value
     },
-    setEvent(value: Event): void {
+    setEvent(value: Event, cards: HearthstoneCard[]): void {
       this.events.event = value
+      this.events.cards = cards
+      this.events.type =
+        cards.length >= 24
+          ? EVENT_TYPES.SHOP
+          : cards.length >= 12
+            ? EVENT_TYPES.DISCOVER
+            : cards.length >= 8
+              ? EVENT_TYPES.CHOOSE
+              : EVENT_TYPES.GET
     },
     clearEvent(): void {
       this.incrementEvent()

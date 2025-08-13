@@ -72,10 +72,26 @@ export function getRarityById(rarityId: number): number {
 /**
  * Get the query params to filter for cards from all selected classes and neutrals
  *
- * @param classes Selected classes
+ * @param classes Selected classes, leave undefined for all classes
  * @returns Query params for classes including enutrals
  */
-export function classQueryParams(classes: Class[]): QueryParam[] {
+export function classQueryParams(classes: Class[] | undefined): QueryParam[] {
+  if (!classes)
+    return [
+      { key: 'classId', value: CLASSES.DEATH_KNIGHT.id },
+      { key: 'classId', value: CLASSES.DRUID.id },
+      { key: 'classId', value: CLASSES.HUNTER.id },
+      { key: 'classId', value: CLASSES.MAGE.id },
+      { key: 'classId', value: CLASSES.PALADIN.id },
+      { key: 'classId', value: CLASSES.PRIEST.id },
+      { key: 'classId', value: CLASSES.ROGUE.id },
+      { key: 'classId', value: CLASSES.SHAMAN.id },
+      { key: 'classId', value: CLASSES.WARLOCK.id },
+      { key: 'classId', value: CLASSES.WARRIOR.id },
+      { key: 'classId', value: CLASSES.NEUTRAL.id },
+      { key: 'classId', value: CLASSES.DEMON_HUNTER.id },
+    ]
+
   const params = classes.map((cl) => ({
     key: 'classId' as keyof HearthstoneCard,
     value: cl.id,
@@ -100,6 +116,13 @@ export function sortCards(cards: HearthstoneCard[]): HearthstoneCard[] {
   })
 }
 
+/**
+ * Calculate the buy/sell price of a card
+ *
+ * @param card The card to calculate the price for
+ * @param context If the card is from the shop or the player cards
+ * @returns The gold exchange of the card
+ */
 export function cardPrice(card: HearthstoneCard, context: 'shop' | 'cards'): number {
   const rarityPrice = {
     [RARITY_ID.COMMON]: 2,

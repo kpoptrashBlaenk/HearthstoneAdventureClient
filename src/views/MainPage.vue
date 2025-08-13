@@ -24,7 +24,7 @@
           :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': eventTransition }]"
         >
           <template #title>
-            <div class="border-b-1">{{ eventCardTitle }}</div>
+            <div v-html="eventCardTitle" class="border-b-1"></div>
           </template>
           <template #content>
             <div class="h-full">
@@ -45,6 +45,7 @@ import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { useStateStore } from '@/store/stateStore'
 import { STATES } from '@/utils/constants'
+import { EVENT_TYPES } from '@/utils/events'
 import { Card } from 'primevue'
 import { onMounted, ref, shallowRef, type Component } from 'vue'
 
@@ -65,7 +66,6 @@ const TRANSITION_DURATION = 200
 /* Lifecycle Hooks */
 onMounted(() => {
   cardStore.init()
-  console.log(cardStore.filter(cardStore.cards, [{key: 'name', value: 'Horn of Winter'}]))
   stateSetter()
 })
 
@@ -85,7 +85,7 @@ function stateSetter(): void {
 
   if (stateStore.currentState === STATES.CLASSES) {
     playerStore.setCards(cardStore.createBasicDeck(globalStore.classes.classes))
-    playerStore.groupByClass()
+    cardStore.groupByClass(playerStore.cards)
     swtichBaseComponent('Cards', 'Your Cards')
     switchEventComponent('StartEvent', 'Start')
     showInfo.value = true
@@ -101,10 +101,21 @@ function stateSetter(): void {
   }
 
   if (stateStore.currentState === STATES.EVENT) {
-    switch (globalStore.events.event?.type) {
-      case 'SHOP':
-        switchEventComponent('Shop', 'Shop')
+    switch (globalStore.events.type) {
+      case EVENT_TYPES.SHOP:
+        switchEventComponent('Shop', globalStore.events.event?.tooltips.SHOP)
         stateStore.setShopState()
+      case EVENT_TYPES.DISCOVER:
+        switchEventComponent('Discover', globalStore.events.event?.tooltips.DISCOVER)
+        stateStore.setShopState()
+      case EVENT_TYPES.CHOOSE:
+        switchEventComponent('Choose', globalStore.events.event?.tooltips.CHOOSE)
+        stateStore.setShopState()
+      case EVENT_TYPES.GET:
+        switchEventComponent('Get', globalStore.events.event?.tooltips.GET)
+        stateStore.setShopState()
+      default:
+        console.error(`globalStore.event.type not found: ${globalStore.events.type}`)
     }
     return
   }

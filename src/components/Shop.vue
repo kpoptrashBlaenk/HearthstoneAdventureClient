@@ -25,11 +25,10 @@
 
 <script setup lang="ts">
 /* Import */
-import { useCardStore } from '@/store/cardStore'
 import { useGlobalStore } from '@/store/globalStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { type HearthstoneCard } from '@/types/types'
-import { cardPrice, classQueryParams, errorToast, sortCards } from '@/utils/functions'
+import { cardPrice, errorToast, sortCards } from '@/utils/functions'
 import { Button, Toast, useToast } from 'primevue'
 import { onBeforeMount, ref } from 'vue'
 
@@ -37,7 +36,6 @@ import { onBeforeMount, ref } from 'vue'
 const emit = defineEmits(['next'])
 
 /* Const */
-const cardStore = useCardStore()
 const globalStore = useGlobalStore()
 const playerStore = usePlayerStore()
 const shopCards = ref<HearthstoneCard[]>([])
@@ -59,7 +57,7 @@ function buy(card: HearthstoneCard, cost: number): void {
 }
 
 function refresh(): void {
-  const cards = cardStore.filter(cardStore.cards, classQueryParams(globalStore.classes.classes), 'some')
+  const cards = globalStore.events.cards
   const cardsToSell: HearthstoneCard[] = []
 
   for (let i = 0; i < 6; i++) {
