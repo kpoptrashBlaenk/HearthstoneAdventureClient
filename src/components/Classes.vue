@@ -60,7 +60,7 @@ function selectClass(cl: Class): void {
   }
 
   // Check if selected classes full
-  if (selectedClasses.value.length >= 3) {
+  if (selectedClasses.value.length >= globalStore.classes.number) {
     errorToast(
       toast,
       `You can't choose more than ${globalStore.classes.number} ${globalStore.classes.number === 1 ? 'class' : 'classes'}`,

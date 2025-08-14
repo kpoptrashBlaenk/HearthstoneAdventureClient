@@ -51,6 +51,7 @@ onBeforeMount(() => {
 
     // Filter event cards
     const bucketParamCards = cardStore.filter(cardStore.cards, event.bucket.params as QueryParam[], 'some')
+    const whatever = classQueryParams(event.bucket.classes?.map((id) => getClassById(id as number)))
     const bucketClassesCards = cardStore.filter(
       bucketParamCards,
       classQueryParams(event.bucket.classes?.map((id) => getClassById(id))),
