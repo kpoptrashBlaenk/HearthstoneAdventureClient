@@ -76,13 +76,23 @@ function clicked(card: HearthstoneCard, event: any): void {
       return sellable
     }
 
+    // If neutral
     if (card.classId === CLASSES.NEUTRAL.id) {
       for (const cl of globalStore.classes.classes) {
         if (!checkSellable(cl)) return
       }
-    } else {
+    }
+    // If class
+    else if (card.classId) {
       const cl = getClassById(card.classId)
       if (!checkSellable(cl)) return
+    }
+    // If multi class
+    else {
+      for (const classId of card.multiClassIds) {
+        if (!globalStore.classes.classes.includes(getClassById(classId))) continue
+        if (!checkSellable(getClassById(classId))) return
+      }
     }
 
     cardPopoverRef.value?.popoverHide(event)
