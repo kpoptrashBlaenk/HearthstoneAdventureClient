@@ -1,5 +1,3 @@
 # TODO
 
 ## Copy Deck Code
-
-## MULTICLASS THROUGH TOURIST
