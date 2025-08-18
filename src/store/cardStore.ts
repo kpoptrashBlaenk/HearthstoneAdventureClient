@@ -1,6 +1,6 @@
 import type { Class, HearthstoneCard, QueryParam } from '@/types/types'
 import { CLASSES, RARITY_ID } from '@/utils/constants'
-import { classQueryParams, fetchCards } from '@/utils/functions'
+import { classQueryParams, fetchCards, isMaxRunes } from '@/utils/functions'
 import { defineStore } from 'pinia'
 import { useGlobalStore } from './globalStore'
 
@@ -59,6 +59,13 @@ export const useCardStore = defineStore('card', {
     createBasicDeck(classes: Class[]): HearthstoneCard[] {
       let cards: HearthstoneCard[] = []
 
+      // For death knight only
+      let runeCost = {
+        frost: 0,
+        unholy: 0,
+        blood: 0,
+      }
+
       // Filter for all classes
       const filtered = this.filter(this.cards, classQueryParams(classes), 'some')
 
@@ -68,6 +75,22 @@ export const useCardStore = defineStore('card', {
 
       const checkMaxRarity = (card: HearthstoneCard, value: number, amount: number): boolean => {
         return card.rarityId === value && cards.filter((card) => card.rarityId === value).length >= amount
+      }
+
+      const checkMaxRunes = (card: HearthstoneCard): boolean => {
+        if (!card.runeCost) {
+          return false
+        }
+
+        // If not exceeding too much, apply
+        if (!isMaxRunes(card, runeCost)) {
+          runeCost.frost = Math.max(runeCost.frost, card.runeCost.frost)
+          runeCost.unholy = Math.max(runeCost.unholy, card.runeCost.unholy)
+          runeCost.blood = Math.max(runeCost.blood, card.runeCost.blood)
+          return false
+        }
+
+        return true
       }
 
       // 10 for each class, +20 for neutrals to get to 20
@@ -82,8 +105,9 @@ export const useCardStore = defineStore('card', {
         const isMaxRare = checkMaxRarity(randomCard, RARITY_ID.RARE, 6 + 3 * classes.length)
         const isMaxEpic = checkMaxRarity(randomCard, RARITY_ID.EPIC, 2 + 2 * classes.length)
         const isMaxLegendary = checkMaxRarity(randomCard, RARITY_ID.LEGENDARY, 2 + 1 * classes.length)
+        const isMaxRunes = checkMaxRunes(randomCard)
 
-        if (isDuplicate || isMaxClass || isMaxCommon || isMaxRare || isMaxEpic || isMaxLegendary) {
+        if (isDuplicate || isMaxClass || isMaxCommon || isMaxRare || isMaxEpic || isMaxLegendary || isMaxRunes) {
           filtered.splice(randomIndex, 1)
           i--
           continue

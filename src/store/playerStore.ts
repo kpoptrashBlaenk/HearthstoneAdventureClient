@@ -1,6 +1,6 @@
 import type { HearthstoneCard } from '@/types/types'
 import { CLASSES, RARITY_ID } from '@/utils/constants'
-import { cardPrice, sortCards } from '@/utils/functions'
+import { cardPrice, isMaxRunes, sortCards } from '@/utils/functions'
 import { defineStore } from 'pinia'
 
 export const usePlayerStore = defineStore('player', {
@@ -86,8 +86,17 @@ export const usePlayerStore = defineStore('player', {
       // If deck is neutral, add
       if (this.deck.every((c) => c.classId === CLASSES.NEUTRAL.id)) return true
 
-      // If any card inside has this class (with the other checks, it shouldn't be able to have more than 1 class inside), add
-      if (this.deck.some((c) => c.classId === card.classId)) return true
+      // If deck has only multiClass as class cards
+      if (this.deck.every((c) => !c.classId)) {
+        const multiClasses = this.deck.filter((c) => c.classId === null).flatMap((c) => c.multiClassIds ?? [])
+        if (
+          card.classId === null ? card.multiClassIds.some((cl) => multiClasses.includes(cl)) : multiClasses.includes(card.classId)
+        )
+          return true
+      }
+
+      // If deck has class cards
+      if (this.deck.some((c) => c.classId === card.classId || card.multiClassIds.includes(c.classId))) return true
 
       return false
     },
@@ -96,6 +105,27 @@ export const usePlayerStore = defineStore('player', {
     },
     deckFull(): boolean {
       return this.deck.length >= 30
+    },
+    isMaxRunes(card: HearthstoneCard): boolean {
+      if (!card.runeCost) {
+        return false
+      }
+
+      // Set initial runes
+      let runeCost = {
+        frost: 0,
+        unholy: 0,
+        blood: 0,
+      }
+      this.deck.forEach((card) => {
+        if (card.runeCost) {
+          runeCost.frost = Math.max(runeCost.frost, card.runeCost.frost)
+          runeCost.unholy = Math.max(runeCost.unholy, card.runeCost.unholy)
+          runeCost.blood = Math.max(runeCost.blood, card.runeCost.blood)
+        }
+      })
+
+      return isMaxRunes(card, runeCost)
     },
   },
 })

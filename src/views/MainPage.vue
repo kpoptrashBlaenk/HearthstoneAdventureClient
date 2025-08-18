@@ -94,9 +94,10 @@ function stateSetter(): void {
   }
 
   if (stateStore.currentState === STATES.BASIC_DECK) {
-    switchEventComponent('Events', 'Events')
-    stateStore.setEventState()
-    checkEndRound()
+    checkEndRound(() => {
+      switchEventComponent('Events', 'Events')
+      stateStore.setEventState()
+    })
     return
   }
 
@@ -108,15 +109,15 @@ function stateSetter(): void {
         break
       case EVENT_TYPES.DISCOVER:
         switchEventComponent('Discover', globalStore.events.event?.tooltips.DISCOVER)
-        stateStore.setShopState()
+        stateStore.setDiscoverState()
         break
       case EVENT_TYPES.CHOOSE:
         switchEventComponent('Choose', globalStore.events.event?.tooltips.CHOOSE)
-        stateStore.setShopState()
+        stateStore.setChooseState()
         break
       case EVENT_TYPES.GET:
         switchEventComponent('Get', globalStore.events.event?.tooltips.GET)
-        stateStore.setShopState()
+        stateStore.setGetState()
         break
       default:
         console.error(`globalStore.event.type not found: ${globalStore.events.type}`)
@@ -124,12 +125,18 @@ function stateSetter(): void {
     return
   }
 
-  if (stateStore.currentState === STATES.SHOP) {
+  if (
+    stateStore.currentState === STATES.SHOP ||
+    stateStore.currentState === STATES.DISCOVER ||
+    stateStore.currentState === STATES.CHOOSE ||
+    stateStore.currentState === STATES.GET
+  ) {
     playerStore.resetSoldCards()
     playerStore.resetBoughtCards()
-    switchEventComponent('Events', 'Events')
-    stateStore.setEventState()
-    checkEndRound()
+    checkEndRound(() => {
+      switchEventComponent('Events', 'Events')
+      stateStore.setEventState()
+    })
     return
   }
 
@@ -146,10 +153,11 @@ function stateSetter(): void {
       return
     }
 
-    switchEventComponent('Events', 'Events')
-    swtichBaseComponent('Cards', 'Your Cards')
-    stateStore.setEventState()
-    checkEndRound()
+    checkEndRound(() => {
+      switchEventComponent('Events', 'Events')
+      swtichBaseComponent('Cards', 'Your Cards')
+      stateStore.setEventState()
+    })
     return
   }
 }
@@ -178,11 +186,13 @@ async function switchEventComponent(component?: string, title?: string): Promise
   }, TRANSITION_DURATION)
 }
 
-function checkEndRound(): void {
+function checkEndRound(callback: () => void): void {
   if (globalStore.isEndRound()) {
     switchEventComponent('Deck', 'Your Deck')
     stateStore.setDeckState()
     return
   }
+
+  callback()
 }
 </script>

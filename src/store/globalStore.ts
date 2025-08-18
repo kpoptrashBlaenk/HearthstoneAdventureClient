@@ -23,7 +23,7 @@ export const useGlobalStore = defineStore('global', {
       cards: [] as HearthstoneCard[],
       type: null as EventType | null,
       event: null as Event | null,
-      current: -1,
+      current: 0,
       max: 0,
     },
   }),

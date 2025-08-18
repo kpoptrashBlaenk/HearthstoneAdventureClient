@@ -135,3 +135,27 @@ export function cardPrice(card: HearthstoneCard, context: 'shop' | 'cards'): num
 
   return price
 }
+
+/**
+ * Returns if cards fit into runes
+ *
+ * @param card Card to check for
+ * @param runeCost Rune counter
+ * @returns If card is valid
+ */
+export function isMaxRunes(card: HearthstoneCard, runeCost: { frost: number; unholy: number; blood: number }): boolean {
+  // Calculate how many runes can be exceeded
+  const runeOverTolerance = 3 - (runeCost.frost + runeCost.unholy + runeCost.blood)
+
+  // Calculate exceeding runes
+  let runesOver = 0
+  let frostOver = card.runeCost.frost - runeCost.frost
+  let unholyOver = card.runeCost.unholy - runeCost.unholy
+  let bloodOver = card.runeCost.blood - runeCost.blood
+
+  if (frostOver > 0) runesOver += frostOver
+  if (unholyOver > 0) runesOver += unholyOver
+  if (bloodOver > 0) runesOver += bloodOver
+
+  return runesOver > runeOverTolerance
+}

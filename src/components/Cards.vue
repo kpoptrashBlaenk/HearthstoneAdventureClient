@@ -42,7 +42,6 @@ import { usePlayerStore } from '@/store/playerStore'
 import { useStateStore } from '@/store/stateStore'
 import { type CardPopoverRef, type Class, type HearthstoneCard } from '@/types/types'
 import { CLASSES, STATES } from '@/utils/constants'
-import { EVENT_TYPES } from '@/utils/events'
 import { classQueryParams, errorToast, getClassById } from '@/utils/functions'
 import { Card, Toast, useToast } from 'primevue'
 import { ref } from 'vue'
@@ -63,7 +62,7 @@ const toast = useToast()
 /* Functions */
 function clicked(card: HearthstoneCard, event: any): void {
   // Sell card if shop
-  if (globalStore.events.type === EVENT_TYPES.SHOP) {
+  if (stateStore.currentState === STATES.SHOP) {
     // Check if a deck needs this card
     const checkSellable = (cl: Class): boolean => {
       const copy = [...playerStore.cards]
@@ -93,7 +92,7 @@ function clicked(card: HearthstoneCard, event: any): void {
 
   // Add card to deck if deck
   if (stateStore.currentState === STATES.DECK) {
-    playerStore.deckFull() || playerStore.isMaxInDeck(card) || !playerStore.isDeckClass(card)
+    playerStore.deckFull() || playerStore.isMaxInDeck(card) || !playerStore.isDeckClass(card) || playerStore.isMaxRunes(card)
       ? errorToast(toast, `Can't add this card to the deck`)
       : playerStore.addToDeck(card)
   }
