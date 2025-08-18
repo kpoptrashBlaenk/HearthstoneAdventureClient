@@ -119,8 +119,6 @@ function stateSetter(): void {
         switchEventComponent('Get', globalStore.events.event?.tooltips.GET)
         stateStore.setGetState()
         break
-      default:
-        console.error(`globalStore.event.type not found: ${globalStore.events.type}`)
     }
     return
   }
@@ -188,6 +186,7 @@ async function switchEventComponent(component?: string, title?: string): Promise
 
 function checkEndRound(callback: () => void): void {
   if (globalStore.isEndRound()) {
+    globalStore.incrementEvent()
     switchEventComponent('Deck', 'Your Deck')
     stateStore.setDeckState()
     return

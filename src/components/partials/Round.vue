@@ -3,7 +3,7 @@
     <div
       v-for="index in globalStore.events.max"
       class="border-gold h-5 w-10"
-      :class="index <= globalStore.events.current + 1 ? 'bg-purple-light' : 'bg-purple-dark'"
+      :class="index <= globalStore.events.current ? 'bg-purple-light' : 'bg-purple-dark'"
     ></div>
   </div>
 </template>
