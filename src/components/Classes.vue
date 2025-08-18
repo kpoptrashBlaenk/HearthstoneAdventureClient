@@ -1,20 +1,20 @@
 <template>
   <div class="flex flex-col justify-center">
     <!-- Grid -->
-    <div class="mt-3 grid grid-cols-6 gap-5">
+    <div class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       <!-- Classes -->
       <div
         v-for="cl in classes.filter((cl) => cl.id !== CLASSES.NEUTRAL.id)"
         :class="{ 'shadow-gold': selectedClasses.includes(cl) }"
-        class="col h-32 w-32 cursor-pointer rounded-md bg-gray-200 transition-transform duration-150 active:scale-90"
+        class="col h-24 w-24 cursor-pointer rounded-md bg-gray-200 transition-transform duration-150 active:scale-90 2xl:h-32 2xl:w-32"
         @click="selectClass(cl)"
-      />
+      ></div>
     </div>
 
     <!-- Continue -->
-    <Button class="mx-auto mt-5" raised :disabled="selectedClasses.length !== globalStore.classes.number" @click="go()"
-      >Continue</Button
-    >
+    <Button class="mx-auto mt-5" raised :disabled="selectedClasses.length !== globalStore.classes.number" @click="go()">
+      Continue
+    </Button>
   </div>
 
   <!-- Toast -->

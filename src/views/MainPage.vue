@@ -1,11 +1,11 @@
 <template>
   <div class="mx-auto mt-2 flex h-[98vh] w-[98vw] flex-col items-center gap-5 p-0">
     <Info v-if="showInfo" />
-    <div class="flex h-full w-full items-center justify-center">
-      <div class="mx-1 my-auto flex items-start gap-10">
-        <!-- Base Card -->
+    <!-- <div class="flex h-full w-full items-center justify-center"> -->
+    <div class="mx-1 my-auto flex w-full items-start justify-center gap-10">
+      <!-- Base Card -->
+      <div class="flex w-7/12 justify-center" v-if="baseCardContent">
         <Card
-          v-if="baseCardContent"
           class="transition-opacity ease-in-out"
           :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': baseTransition }]"
         >
@@ -16,10 +16,11 @@
             <component :is="baseCardContent" @next="stateSetter()" />
           </template>
         </Card>
+      </div>
 
-        <!-- Event Card -->
+      <!-- Event Card -->
+      <div v-if="eventCardContent" class="flex w-5/12 justify-center">
         <Card
-          v-if="eventCardContent"
           class="transition-opacity ease-in-out"
           :class="[`duration-${TRANSITION_DURATION}`, { 'opacity-0': eventTransition }]"
         >
@@ -32,6 +33,7 @@
             </div>
           </template>
         </Card>
+        <!-- </div> -->
       </div>
     </div>
   </div>
