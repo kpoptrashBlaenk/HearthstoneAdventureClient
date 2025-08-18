@@ -11,8 +11,9 @@ export const useCardStore = defineStore('card', {
   actions: {
     async init(): Promise<void> {
       let cards = JSON.parse(localStorage.getItem('cards')!)
+      const today = new Date().toISOString().slice(0, 10)
 
-      if (!cards) {
+      if (!cards || cards.date !== today) {
         cards = await fetchCards()
         this.cacheCards(cards)
       }
@@ -21,7 +22,14 @@ export const useCardStore = defineStore('card', {
     },
 
     async cacheCards(cards: HearthstoneCard[]): Promise<void> {
-      localStorage.setItem('cards', JSON.stringify(cards))
+      const today = new Date().toISOString().slice(0, 10)
+      localStorage.setItem(
+        'cards',
+        JSON.stringify({
+          date: today,
+          cards,
+        }),
+      )
     },
 
     filter(cards: HearthstoneCard[], params: QueryParam[], check: 'every' | 'some' = 'every'): HearthstoneCard[] {

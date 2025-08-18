@@ -27,7 +27,7 @@ export async function fetchCards(params: QueryParam[] = []): Promise<Hearthstone
 
   const response = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${await fetchAccessToken()}`,
     },
   })
   const data = await response.json()
@@ -47,6 +47,21 @@ export async function fetchCards(params: QueryParam[] = []): Promise<Hearthstone
   }
 
   return data.cards as HearthstoneCard[]
+}
+
+export async function fetchAccessToken(): Promise<string> {
+  const response = await fetch('https://oauth.battle.net/token', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Basic ' + btoa(`${import.meta.env.VITE_CLIENT_ID}:${import.meta.env.VITE_CLIENT_SECRET}`),
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials',
+  })
+
+  const data = await response.json()
+
+  return data.access_token
 }
 
 /**
