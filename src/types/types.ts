@@ -2,6 +2,7 @@ import type CardPopover from '@/components/partials/CardPopover.vue'
 import type {
   CARD_SET_ID,
   CARD_TYPE_ID,
+  CLASS_DECK_IDS,
   CLASSES,
   FACTION_ID,
   KEYWORD_ID,
@@ -9,7 +10,7 @@ import type {
   RARITY_ID,
   SPELL_SCHOOL_ID,
 } from '@/utils/constants'
-import type { EVENTS, EVENT_TYPES } from '@/utils/events'
+import type { EVENT_TYPES, EVENTS } from '@/utils/events'
 
 export type HearthstoneCard = {
   id: number
@@ -44,6 +45,9 @@ export type HearthstoneCard = {
 
 export type ClassKey = keyof typeof CLASSES
 export type Class = (typeof CLASSES)[ClassKey]
+
+export type ClassDeckIdsKey = keyof typeof CLASS_DECK_IDS
+export type ClassDeckIds = (typeof CLASS_DECK_IDS)[ClassDeckIdsKey]
 
 export type RarityIdKey = keyof typeof RARITY_ID
 export type RarityId = (typeof RARITY_ID)[RarityIdKey]

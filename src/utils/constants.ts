@@ -1,6 +1,7 @@
 import type {
   CardSetIdKey,
   CardTypeIdKey,
+  ClassDeckIdsKey,
   ClassKey,
   FactionIdKey,
   KeywordIdKey,
@@ -24,6 +25,21 @@ export const CLASSES = {
   NEUTRAL: { id: 12, name: 'Neutral' },
 }
 export const CLASS_KEYS = Object.keys(CLASSES) as ClassKey[]
+
+export const CLASS_DECK_IDS = {
+  WARRIOR: 7,
+  SHAMAN: 1066,
+  ROGUE: 930,
+  PALADIN: 671,
+  HUNTER: 31,
+  DRUID: 274,
+  WARLOCK: 893,
+  MAGE: 637,
+  PRIEST: 813,
+  DEMON_HUNTER: 56550,
+  DEATH_KNIGHT: 78065,
+}
+export const CLASS_DECK_IDS_KEYS = Object.keys(CLASS_DECK_IDS) as ClassDeckIdsKey[]
 
 export const RARITY_ID = {
   COMMON: 1,
