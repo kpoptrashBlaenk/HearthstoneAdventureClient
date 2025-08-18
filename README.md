@@ -1,39 +1,55 @@
-# HearthstoneBazaarRipoff
+# Hearthstone Advenure Client
 
-This template should help get you started developing with Vue 3 in Vite.
+A **client to simulate *Hearthstone Solo Adventures***, enhanced with events, shops and asynchronous multiplayer with friends. Inspired by Hearthstone, but with custom rules and mechanics.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- Uses **original Hearthstone cards** from the official API
+- Simulates **solo adventures**
+- Includes custom **shops, events, and buckets**
+- Asynchronous **player duels** with a friend
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## Usage
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Open the [page](https://kpoptrashBlaenk.github.io/hearthstone-adventure-client/) in your browser
+- Select your settings and classes
+- Go through the events to strengthen your decks
+- Copy the deck code and challenge your friend
 
-## Project Setup
+---
 
-```sh
-npm install
-```
+## Screenshots
 
-### Compile and Hot-Reload for Development
+[Screenshots]
 
-```sh
-npm run dev
-```
+---
 
-### Type-Check, Compile and Minify for Production
+## Contributing
 
-```sh
-npm run build
-```
+This project is **open sourcce** and welcomes contributions!
 
-### Lint with [ESLint](https://eslint.org/)
+1. Fork the repository
 
-```sh
-npm run lint
-```
+2. Create a new branch (git checkout -b feature/your-feature)
+
+3. Make your changes and commit (git commit -m 'Add some feature')
+
+4. Push to the branch (git push origin feature/your-feature)
+
+5. Open a Pull Request
+
+Please follow the coding style used in the project and run npm run format before submitting PRs.
+
+---
+
+## License
+
+This project is released under the MIT License. Please see the [licence file](LICENSE.md) for more information. [tl;dr](https://www.tldrlegal.com/license/mit-license) you can do whatever you want as long as you include the original copyright and license notice in any copy of the software/source.
+
+---
+
+**Note**: All Hearthstone cards and intellectual property belong to Blizzard Entertainment. This project is **fan-made** and for educational or entertainment purposes only.
