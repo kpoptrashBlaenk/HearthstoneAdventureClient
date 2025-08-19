@@ -13,55 +13,16 @@ export function errorToast(toast: ToastServiceMethods, detail: string): void {
 }
 
 /**
- * Fetch all Standard Hearthstone cards from https://eu.api.blizzard.com/hearthstone/cards?set=standard&locale=en_US&namespace=static-eu
+ * Fetch cards from https://eu.api.blizzard.com/hearthstone/cards using a token generated from https://oauth.battle.net/token by going through a proxy by vercel
  *
- * @param params {@link QueryParam} to filter the api
- * @returns An array of {@link HearthstoneCard}
+ * @returns All Hearthstone cards
  */
-export async function fetchCards(params: QueryParam[] = []): Promise<HearthstoneCard[]> {
-  let url = `https://eu.api.blizzard.com/hearthstone/cards?set=standard&locale=en_US&namespace=static-eu&sort=manaCost%3Aasc%2Cname%3Aasc`
-  // Create url with params
-  params?.forEach((param) => {
-    url += `&${param.key}=${param.value}`
-  })
-
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${await fetchAccessToken()}`,
-    },
-  })
-  const data = await response.json()
-  let cards = data.cards
-
-  // If mroe apges and this is not alst apge
-  if (data.pageCount > 1 && data.pageCount > data.page) {
-    // Remove last page param if there is
-    if (data.page > 1) {
-      params?.pop()
-    }
-
-    // Add new page param and fetch cards
-    params?.push({ key: 'page', value: data.page + 1 })
-
-    cards.push(...(await fetchCards(params)))
-  }
-
-  return data.cards as HearthstoneCard[]
-}
-
-export async function fetchAccessToken(): Promise<string> {
-  const response = await fetch('https://oauth.battle.net/token', {
-    method: 'POST',
-    headers: {
-      Authorization: 'Basic ' + btoa(`${import.meta.env.VITE_CLIENT_ID}:${import.meta.env.VITE_CLIENT_SECRET}`),
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: 'grant_type=client_credentials',
-  })
+export async function fetchCards(): Promise<HearthstoneCard[]> {
+  const response = await fetch('/api/fetchCards')
 
   const data = await response.json()
 
-  return data.access_token
+  return data as HearthstoneCard[]
 }
 
 /**

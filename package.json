@@ -8,10 +8,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "format": "vue-tsc --build && prettier --write src/"
+    "build": "vite build",
+    "format": "vue-tsc --build && prettier --write src/",
+    "vercel": "npx vercel dev"
   },
   "dependencies": {
     "@primeuix/themes": "^1.2.3",
