@@ -5,10 +5,13 @@
       <!-- Classes -->
       <div
         v-for="cl in classes.filter((cl) => cl.id !== CLASSES.NEUTRAL.id)"
-        :class="{ 'shadow-gold': selectedClasses.includes(cl) }"
-        class="col h-24 w-24 cursor-pointer rounded-md bg-gray-200 transition-transform duration-150 active:scale-90 2xl:h-32 2xl:w-32"
-        @click="selectClass(cl)"
-      ></div>
+        class="col relative cursor-pointer rounded-md transition-transform duration-150 active:scale-90"
+      >
+        <img :src="cl.image" :class="{ 'drop-shadow-gold': selectedClasses.includes(cl) }" @click="selectClass(cl)" />
+        <div class="absolute right-0 bottom-5 w-2/3 text-xs font-bold">
+          {{ cl.name }}
+        </div>
+      </div>
     </div>
 
     <!-- Continue -->
