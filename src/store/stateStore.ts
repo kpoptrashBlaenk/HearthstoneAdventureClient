@@ -10,6 +10,9 @@ export const useStateStore = defineStore('state', {
     setStartState(): void {
       this.currentState = STATES.START
     },
+    setLoadingState(): void {
+      this.currentState = STATES.LOADING
+    },
     setSettingsState(): void {
       this.currentState = STATES.SETTINGS
     },

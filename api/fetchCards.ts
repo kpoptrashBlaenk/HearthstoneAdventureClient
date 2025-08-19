@@ -24,7 +24,7 @@ export default async function handler(req: any, res: any) {
     }
 
     const fetchCards = async (params: any = []): Promise<any> => {
-      let url = `https://eu.api.blizzard.com/hearthstone/cards?set=standard&locale=en_US&namespace=static-eu&sort=manaCost%3Aasc%2Cname%3Aasc`
+      let url = `https://eu.api.blizzard.com/hearthstone/cards?set=standard&locale=en_US&namespace=static-eu&sort=manaCost%3Aasc%2Cname%3Aasc&pageSize=400`
 
       // Create url with params
       params?.forEach((param: any) => {

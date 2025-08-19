@@ -53,11 +53,11 @@ import { onMounted, ref, shallowRef, type Component } from 'vue'
 
 /* Const */
 const baseCardContent = shallowRef<Component>()
-const baseCardTitle = ref<string>('Start')
+const baseCardTitle = ref<string>()
 const baseTransition = ref<boolean>(false)
 const cardStore = useCardStore()
 const eventCardContent = shallowRef<Component>()
-const eventCardTitle = ref<string>('Start')
+const eventCardTitle = ref<string>()
 const eventTransition = ref<boolean>(false)
 const globalStore = useGlobalStore()
 const playerStore = usePlayerStore()
@@ -67,13 +67,18 @@ const TRANSITION_DURATION = 200
 
 /* Lifecycle Hooks */
 onMounted(() => {
-  cardStore.init()
   stateSetter()
 })
 
 /* Functions */
 function stateSetter(): void {
   if (stateStore.currentState === STATES.START) {
+    swtichBaseComponent('Loading', 'Loading')
+    stateStore.setLoadingState()
+    return
+  }
+
+  if (stateStore.currentState === STATES.LOADING) {
     swtichBaseComponent('Settings', 'Settings')
     stateStore.setSettingsState()
     return

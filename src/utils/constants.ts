@@ -156,6 +156,7 @@ export const FACTION_ID_KEYS = Object.keys(CARD_SET_ID) as FactionIdKey[]
 
 export const STATES = {
   START: 'START',
+  LOADING: 'LOADING',
   SETTINGS: 'SETTINGS',
   CLASSES: 'CLASSES',
   BASIC_DECK: 'BASIC_DECK',

@@ -100,6 +100,11 @@ body {
   --epic: #644c82 !important;
   --legendary: #855c25 !important;
 
+  --common-light: #b0b0b0 !important;
+  --rare-light: #4a7ab0 !important;
+  --epic-light: #8b68a8 !important;
+  --legendary-light: #b37b3f !important;
+
   /* Shadow */
   --shadow-sm: 0 0 2px 1px;
   --shadow-md: 0 0 4px 2px;
@@ -163,4 +168,10 @@ body {
   --p-popover-color: inherit !important;
   --p-popover-gutter: 0 !important;
   --p-popover-arrow-offset: 0 !important;
+
+  /* ProgressSpinner */
+  --p-progressspinner-color-one: var(--purple-light) !important;
+  --p-progressspinner-color-two: var(--purple) !important;
+  --p-progressspinner-color-three: var(--purple-dark) !important;
+  --p-progressspinner-color-four: var(--epic) !important;
 }
