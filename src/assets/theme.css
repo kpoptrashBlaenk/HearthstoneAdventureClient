@@ -19,6 +19,42 @@ body {
 .drop-shadow-gold:active {
   filter: drop-shadow(var(--drop-shadow-lg) var(--gold));
 }
+.drop-shadow-common {
+  filter: drop-shadow(var(--drop-shadow-md) var(--common-light));
+}
+.drop-shadow-common:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--common-light));
+}
+.drop-shadow-common:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--common-light));
+}
+.drop-shadow-rare {
+  filter: drop-shadow(var(--drop-shadow-md) var(--rare-light));
+}
+.drop-shadow-rare:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--rare-light));
+}
+.drop-shadow-rare:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--rare-light));
+}
+.drop-shadow-epic {
+  filter: drop-shadow(var(--drop-shadow-md) var(--epic-light));
+}
+.drop-shadow-epic:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--epic-light));
+}
+.drop-shadow-epic:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--epic-light));
+}
+.drop-shadow-legendary {
+  filter: drop-shadow(var(--drop-shadow-md) var(--legendary-light));
+}
+.drop-shadow-legendary:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--legendary-light));
+}
+.drop-shadow-legendary:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--legendary-light));
+}
 
 /* Border */
 .border-gold {
@@ -112,6 +148,7 @@ body {
   --drop-shadow-sm: 0 0 4px;
   --drop-shadow-md: 0 0 8px;
   --drop-shadow-lg: 0 0 12px;
+  --drop-shadow-xl: 0 0 24px;
 
   /* Button */
   --p-button-primary-background: var(--purple-light) !important;

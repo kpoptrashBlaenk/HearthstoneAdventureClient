@@ -13,14 +13,12 @@ export const useCardStore = defineStore('card', {
       let cards = JSON.parse(localStorage.getItem('cards')!)
       const today = new Date().toISOString().slice(0, 10)
 
-      cards = await fetchCards()
-
       if (!cards || cards.date !== today) {
         cards = await fetchCards()
-        this.cacheCards(cards)
+        this.cacheCards(cards.cards)
       }
 
-      this.cards = cards
+      this.cards = cards.cards
     },
 
     async cacheCards(cards: HearthstoneCard[]): Promise<void> {

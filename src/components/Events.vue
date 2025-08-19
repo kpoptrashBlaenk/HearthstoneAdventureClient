@@ -14,7 +14,16 @@
         escape: false,
       }"
       :src="`events/${event.image}.webp`"
-      class="drop-shadow-gold -mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
+      class="-mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
+      :class="
+        eventCards[index].length >= 24
+          ? 'drop-shadow-common'
+          : eventCards[index].length >= 12
+            ? 'drop-shadow-rare'
+            : eventCards[index].length >= 8
+              ? 'drop-shadow-epic'
+              : 'drop-shadow-legendary'
+      "
       @click="emitNext(index)"
     />
   </div>
