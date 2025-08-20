@@ -4,7 +4,7 @@ import { CLASSES } from './constants'
 
 export const EVENTS = {
   ALL: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob',
     bucket: BUCKETS.ALL.ALL,
     tooltips: {
       SHOP: 'Open a shop with all cards!',
@@ -14,7 +14,7 @@ export const EVENTS = {
     },
   },
   TAUNT: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_95',
     bucket: BUCKETS.KEYWORD_IDS.TAUNT,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Taunt</i></b> cards!',
@@ -24,7 +24,7 @@ export const EVENTS = {
     },
   },
   SPELL_DAMAGE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_58',
     bucket: BUCKETS.KEYWORD_IDS.SPELL_DAMAGE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Spell Damage</i></b> cards!',
@@ -34,7 +34,7 @@ export const EVENTS = {
     },
   },
   DIVINE_SHIELD: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_15',
     bucket: BUCKETS.KEYWORD_IDS.DIVINE_SHIELD,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Divine Shield</i></b> cards!',
@@ -44,7 +44,7 @@ export const EVENTS = {
     },
   },
   SECRET: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_21',
     bucket: BUCKETS.KEYWORD_IDS.SECRET,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Secret</i></b> cards!',
@@ -54,7 +54,7 @@ export const EVENTS = {
     },
   },
   STEALTH: {
-    image: 'bartender_bob',
+    image: 'HERO_02be',
     bucket: BUCKETS.KEYWORD_IDS.STEALTH,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Stealth</i></b> cards!',
@@ -64,7 +64,7 @@ export const EVENTS = {
     },
   },
   BATTLECRY: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_23',
     bucket: BUCKETS.KEYWORD_IDS.BATTLECRY,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Battlecry</i></b> cards!',
@@ -74,7 +74,7 @@ export const EVENTS = {
     },
   },
   FREEZE: {
-    image: 'bartender_bob',
+    image: 'BG22_HERO_004',
     bucket: BUCKETS.KEYWORD_IDS.FREEZE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Freeze</i></b> cards!',
@@ -84,7 +84,7 @@ export const EVENTS = {
     },
   },
   DEATHRATTLE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_93',
     bucket: BUCKETS.KEYWORD_IDS.DEATHRATTLE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Deathrattle</i></b> cards!',
@@ -94,7 +94,7 @@ export const EVENTS = {
     },
   },
   COMBO: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_01',
     bucket: BUCKETS.KEYWORD_IDS.COMBO,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Combo</i></b> cards!',
@@ -104,7 +104,7 @@ export const EVENTS = {
     },
   },
   OVERLOAD: {
-    image: 'bartender_bob',
+    image: 'BG27_HERO_801',
     bucket: BUCKETS.KEYWORD_IDS.OVERLOAD,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Overload</i></b> cards!',
@@ -114,7 +114,7 @@ export const EVENTS = {
     },
   },
   DISCOVER: {
-    image: 'bartender_bob',
+    image: 'BG28_HERO_400',
     bucket: BUCKETS.KEYWORD_IDS.DISCOVER,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Discover</i></b> cards!',
@@ -124,7 +124,7 @@ export const EVENTS = {
     },
   },
   QUEST: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_41',
     bucket: BUCKETS.KEYWORD_IDS.QUEST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Quest</i></b> cards!',
@@ -134,7 +134,7 @@ export const EVENTS = {
     },
   },
   LIFESTEAL: {
-    image: 'bartender_bob',
+    image: 'BG24_HERO_100',
     bucket: BUCKETS.KEYWORD_IDS.LIFESTEAL,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Lifesteal</i></b> cards!',
@@ -144,7 +144,7 @@ export const EVENTS = {
     },
   },
   RUSH: {
-    image: 'bartender_bob',
+    image: 'HERO_10z',
     bucket: BUCKETS.KEYWORD_IDS.RUSH,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Rush</i></b> cards!',
@@ -154,7 +154,7 @@ export const EVENTS = {
     },
   },
   REBORN: {
-    image: 'bartender_bob',
+    image: 'HERO_11u_Arfus',
     bucket: BUCKETS.KEYWORD_IDS.REBORN,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Reborn</i></b> cards!',
@@ -164,7 +164,7 @@ export const EVENTS = {
     },
   },
   OUTCAST: {
-    image: 'bartender_bob',
+    image: 'BG20_HERO_280',
     bucket: BUCKETS.KEYWORD_IDS.OUTCAST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Outcast</i></b> cards!',
@@ -174,7 +174,7 @@ export const EVENTS = {
     },
   },
   SPELLBURST: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_74',
     bucket: BUCKETS.KEYWORD_IDS.SPELLBURST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Spellburst</i></b> cards!',
@@ -184,7 +184,7 @@ export const EVENTS = {
     },
   },
   TRADEABLE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_10',
     bucket: BUCKETS.KEYWORD_IDS.TRADEABLE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Tradeable</i></b> cards!',
@@ -194,7 +194,7 @@ export const EVENTS = {
     },
   },
   CORPSE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_702',
     bucket: BUCKETS.KEYWORD_IDS.CORPSE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Corpse</i></b> cards!',
@@ -204,7 +204,7 @@ export const EVENTS = {
     },
   },
   ELUSIVE: {
-    image: 'bartender_bob',
+    image: 'HERO_06r',
     bucket: BUCKETS.KEYWORD_IDS.ELUSIVE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Elusive</i></b> cards!',
@@ -214,7 +214,7 @@ export const EVENTS = {
     },
   },
   MINIATURIZE: {
-    image: 'bartender_bob',
+    image: 'THD_034',
     bucket: BUCKETS.KEYWORD_IDS.MINIATURIZE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Miniaturize</i></b> cards!',
@@ -224,7 +224,7 @@ export const EVENTS = {
     },
   },
   TOURIST: {
-    image: 'bartender_bob',
+    image: 'BG32_HERO_002',
     bucket: BUCKETS.KEYWORD_IDS.TOURIST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Tourist</i></b> cards!',
@@ -234,7 +234,7 @@ export const EVENTS = {
     },
   },
   IMBUE: {
-    image: 'bartender_bob',
+    image: 'HERO_06f',
     bucket: BUCKETS.KEYWORD_IDS.IMBUE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Imbue</i></b> cards!',
@@ -244,7 +244,7 @@ export const EVENTS = {
     },
   },
   DARK_GIFT: {
-    image: 'bartender_bob',
+    image: 'HERO_07az',
     bucket: BUCKETS.KEYWORD_IDS.DARK_GIFT,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Dark Gift</i></b> cards!',
@@ -254,7 +254,7 @@ export const EVENTS = {
     },
   },
   TEMPORARY: {
-    image: 'bartender_bob',
+    image: 'HERO_07ag',
     bucket: BUCKETS.KEYWORD_IDS.TEMPORARY,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Temporary</i></b> cards!',
@@ -264,7 +264,7 @@ export const EVENTS = {
     },
   },
   STARSHIP: {
-    image: 'bartender_bob',
+    image: 'BG31_HERO_006',
     bucket: BUCKETS.KEYWORD_IDS.STARSHIP,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Starship</i></b> cards!',
@@ -274,7 +274,7 @@ export const EVENTS = {
     },
   },
   KINDRED: {
-    image: 'bartender_bob',
+    image: 'HERO_02a',
     bucket: BUCKETS.KEYWORD_IDS.KINDRED,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Kindred</i></b> cards!',
@@ -284,7 +284,7 @@ export const EVENTS = {
     },
   },
   CORE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AD',
     bucket: BUCKETS.CARD_SET_IDS.CORE,
     tooltips: {
       SHOP: 'Open a shop with cards from <b><i>the Core Set</i></b>!',
@@ -294,7 +294,7 @@ export const EVENTS = {
     },
   },
   WHIZBANGS_WORKSHOP: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AJ',
     bucket: BUCKETS.CARD_SET_IDS.WHIZBANGS_WORKSHOP,
     tooltips: {
       SHOP: "Open a shop with cards from <b><i>Whizbang's Workshop</i></b>!",
@@ -304,7 +304,7 @@ export const EVENTS = {
     },
   },
   PERILS_IN_PARADISE: {
-    image: 'bartender_bob',
+    image: 'BG30_HERO_304',
     bucket: BUCKETS.CARD_SET_IDS.PERILS_IN_PARADISE,
     tooltips: {
       SHOP: 'Open a shop with cards from <b><i>Perlis in Paradise</i></b>!',
@@ -314,7 +314,7 @@ export const EVENTS = {
     },
   },
   THE_GREAT_DARK_BEYOND: {
-    image: 'bartender_bob',
+    image: 'BG31_HERO_003',
     bucket: BUCKETS.CARD_SET_IDS.THE_GREAT_DARK_BEYOND,
     tooltips: {
       SHOP: 'Open a shop with cards from <b><i>The Great Dark Beyond</i></b>!',
@@ -324,7 +324,7 @@ export const EVENTS = {
     },
   },
   EVENT: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_O',
     bucket: BUCKETS.CARD_SET_IDS.EVENT,
     tooltips: {
       SHOP: 'Open a shop with cards from <b><i>the Event Set</i></b>!',
@@ -334,7 +334,7 @@ export const EVENTS = {
     },
   },
   INTO_THE_EMERALD_DREAM: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AO',
     bucket: BUCKETS.CARD_SET_IDS.INTO_THE_EMERALD_DREAM,
     tooltips: {
       SHOP: 'Open a shop with cards from <b><i>Into the Emerald Dream</i></b>!',
@@ -344,7 +344,7 @@ export const EVENTS = {
     },
   },
   THE_LOST_CITY_OF_UNGORO: {
-    image: 'bartender_bob',
+    image: 'BG33_HERO_001',
     bucket: BUCKETS.CARD_SET_IDS.THE_LOST_CITY_OF_UNGORO,
     tooltips: {
       SHOP: "Open a shop with cards from <b><i>The Lost City of Un'Goro</i></b>!",
@@ -354,7 +354,7 @@ export const EVENTS = {
     },
   },
   HERO: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_Q3',
     bucket: BUCKETS.CARD_TYPE_IDS.HERO,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Kindred</i></b> cards!',
@@ -364,7 +364,7 @@ export const EVENTS = {
     },
   },
   MINION: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AA',
     bucket: BUCKETS.CARD_TYPE_IDS.MINION,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Minions</i></b>!',
@@ -374,7 +374,7 @@ export const EVENTS = {
     },
   },
   SPELL: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_49',
     bucket: BUCKETS.CARD_TYPE_IDS.SPELL,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Spells</i></b>!',
@@ -384,7 +384,7 @@ export const EVENTS = {
     },
   },
   WEAPON: {
-    image: 'bartender_bob',
+    image: 'HERO_01bc',
     bucket: BUCKETS.CARD_TYPE_IDS.WEAPON,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Weapon</i></b> cards!',
@@ -394,7 +394,7 @@ export const EVENTS = {
     },
   },
   LOCATION: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_42',
     bucket: BUCKETS.CARD_TYPE_IDS.LOCATION,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Location</i></b> cards!',
@@ -404,7 +404,7 @@ export const EVENTS = {
     },
   },
   ARCANE: {
-    image: 'bartender_bob',
+    image: 'HERO_08a',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.ARCANE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Arcane</i></b> cards!',
@@ -414,7 +414,7 @@ export const EVENTS = {
     },
   },
   FIRE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_11',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.FIRE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Fire</i></b> cards!',
@@ -424,7 +424,7 @@ export const EVENTS = {
     },
   },
   FROST: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_27',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.FROST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Frost</i></b> cards!',
@@ -434,7 +434,7 @@ export const EVENTS = {
     },
   },
   NATURE: {
-    image: 'bartender_bob',
+    image: 'BG20_HERO_242',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.NATURE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Nature</i></b> cards!',
@@ -444,7 +444,7 @@ export const EVENTS = {
     },
   },
   HOLY: {
-    image: 'bartender_bob',
+    image: 'BG21_HERO_000',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.HOLY,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Holy</i></b> cards!',
@@ -454,7 +454,7 @@ export const EVENTS = {
     },
   },
   SHADOW: {
-    image: 'bartender_bob',
+    image: 'BG20_HERO_282',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.SHADOW,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Shadow</i></b> cards!',
@@ -464,7 +464,7 @@ export const EVENTS = {
     },
   },
   FEL: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_59',
     bucket: BUCKETS.SPELL_SCHOOL_IDS.FEL,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Fel</i></b> cards!',
@@ -474,7 +474,7 @@ export const EVENTS = {
     },
   },
   DRAENEI: {
-    image: 'bartender_bob',
+    image: 'HERO_09at',
     bucket: BUCKETS.MINION_TYPE_IDS.DRAENEI,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Draenei</i></b> cards!',
@@ -484,7 +484,7 @@ export const EVENTS = {
     },
   },
   UNDEAD: {
-    image: 'bartender_bob',
+    image: 'BG25_HERO_100',
     bucket: BUCKETS.MINION_TYPE_IDS.UNDEAD,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Undead</i></b> cards!',
@@ -494,7 +494,7 @@ export const EVENTS = {
     },
   },
   MURLOC: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_55',
     bucket: BUCKETS.MINION_TYPE_IDS.MURLOC,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Murloc</i></b> cards!',
@@ -504,7 +504,7 @@ export const EVENTS = {
     },
   },
   DEMON: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_37',
     bucket: BUCKETS.MINION_TYPE_IDS.DEMON,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Demon</i></b> cards!',
@@ -514,7 +514,7 @@ export const EVENTS = {
     },
   },
   MECH: {
-    image: 'bartender_bob',
+    image: 'BG22_HERO_200',
     bucket: BUCKETS.MINION_TYPE_IDS.MECH,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Mech</i></b> cards!',
@@ -524,7 +524,7 @@ export const EVENTS = {
     },
   },
   ELEMENTAL: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_78',
     bucket: BUCKETS.MINION_TYPE_IDS.ELEMENTAL,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Elemental</i></b> cards!',
@@ -534,7 +534,7 @@ export const EVENTS = {
     },
   },
   BEAST: {
-    image: 'bartender_bob',
+    image: 'BG22_HERO_000',
     bucket: BUCKETS.MINION_TYPE_IDS.BEAST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Beast</i></b> cards!',
@@ -544,7 +544,7 @@ export const EVENTS = {
     },
   },
   PIRATE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_18',
     bucket: BUCKETS.MINION_TYPE_IDS.PIRATE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Pirate</i></b> cards!',
@@ -554,7 +554,7 @@ export const EVENTS = {
     },
   },
   DRAGON: {
-    image: 'bartender_bob',
+    image: 'BG22_HERO_305',
     bucket: BUCKETS.MINION_TYPE_IDS.DRAGON,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Dragon</i></b> cards!',
@@ -564,7 +564,7 @@ export const EVENTS = {
     },
   },
   ZERG: {
-    image: 'bartender_bob',
+    image: 'BG31_HERO_811',
     bucket: BUCKETS.FACTION_IDS.ZERG,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Zerg</i></b> cards!',
@@ -574,7 +574,7 @@ export const EVENTS = {
     },
   },
   TERRAN: {
-    image: 'bartender_bob',
+    image: 'BG31_HERO_801',
     bucket: BUCKETS.FACTION_IDS.TERRAN,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Terran</i></b> cards!',
@@ -584,7 +584,7 @@ export const EVENTS = {
     },
   },
   PROTOSS: {
-    image: 'bartender_bob',
+    image: 'BG31_HERO_802',
     bucket: BUCKETS.FACTION_IDS.PROTOSS,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Protoss</i></b> cards!',
@@ -594,7 +594,7 @@ export const EVENTS = {
     },
   },
   DEATH_KNIGHT: {
-    image: 'bartender_bob',
+    image: 'HERO_11',
     bucket: BUCKETS.CLASSES.DEATH_KNIGHT,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Death Knight</i></b> cards!',
@@ -604,7 +604,7 @@ export const EVENTS = {
     },
   },
   DEMON_HUNTER: {
-    image: 'bartender_bob',
+    image: 'HERO_10',
     bucket: BUCKETS.CLASSES.DEMON_HUNTER,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Demon Hunter</i></b> cards!',
@@ -614,7 +614,7 @@ export const EVENTS = {
     },
   },
   DRUID: {
-    image: 'bartender_bob',
+    image: 'HERO_06',
     bucket: BUCKETS.CLASSES.DRUID,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Druid</i></b> cards!',
@@ -624,7 +624,7 @@ export const EVENTS = {
     },
   },
   HUNTER: {
-    image: 'bartender_bob',
+    image: 'HERO_05',
     bucket: BUCKETS.CLASSES.HUNTER,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Hunter</i></b> cards!',
@@ -634,7 +634,7 @@ export const EVENTS = {
     },
   },
   MAGE: {
-    image: 'bartender_bob',
+    image: 'HERO_08',
     bucket: BUCKETS.CLASSES.MAGE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Mage</i></b> cards!',
@@ -644,7 +644,7 @@ export const EVENTS = {
     },
   },
   PALADIN: {
-    image: 'bartender_bob',
+    image: 'HERO_04',
     bucket: BUCKETS.CLASSES.PALADIN,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Paladin</i></b> cards!',
@@ -654,7 +654,7 @@ export const EVENTS = {
     },
   },
   PRIEST: {
-    image: 'bartender_bob',
+    image: 'HERO_09',
     bucket: BUCKETS.CLASSES.PRIEST,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Priest</i></b> cards!',
@@ -664,7 +664,7 @@ export const EVENTS = {
     },
   },
   ROGUE: {
-    image: 'bartender_bob',
+    image: 'HERO_03',
     bucket: BUCKETS.CLASSES.ROGUE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Rogue</i></b> cards!',
@@ -674,7 +674,7 @@ export const EVENTS = {
     },
   },
   SHAMAN: {
-    image: 'bartender_bob',
+    image: 'HERO_02',
     bucket: BUCKETS.CLASSES.SHAMAN,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Shaman</i></b> cards!',
@@ -684,7 +684,7 @@ export const EVENTS = {
     },
   },
   WARLOCK: {
-    image: 'bartender_bob',
+    image: 'HERO_07',
     bucket: BUCKETS.CLASSES.WARLOCK,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Warlock</i></b> cards!',
@@ -694,7 +694,7 @@ export const EVENTS = {
     },
   },
   WARRIOR: {
-    image: 'bartender_bob',
+    image: 'HERO_01',
     bucket: BUCKETS.CLASSES.WARRIOR,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Warrior</i></b> cards!',
@@ -704,7 +704,7 @@ export const EVENTS = {
     },
   },
   NEUTRAL: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AL',
     bucket: BUCKETS.CLASSES.NEUTRAL,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Neutral</i></b> cards!',
@@ -713,8 +713,48 @@ export const EVENTS = {
       GET: 'Get a random <b><i>Neutral</i></b> card!',
     },
   },
+  COMMON: {
+    image: 'TB_BaconShopBob_SKIN_AK',
+    bucket: BUCKETS.RARITY.COMMON,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>common</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>common</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>common</i></b> cards!',
+      GET: 'Get a random <b><i>common</i></b> card!',
+    },
+  },
+  RARE: {
+    image: 'TB_BaconShopBob_SKIN_B',
+    bucket: BUCKETS.RARITY.RARE,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>rare</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>rare</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>rare</i></b> cards!',
+      GET: 'Get a random <b><i>rare</i></b> card!',
+    },
+  },
+  EPIC: {
+    image: 'TB_BaconShopBob_SKIN_D',
+    bucket: BUCKETS.RARITY.EPIC,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>epic</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>epic</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>epic</i></b> cards!',
+      GET: 'Get a random <b><i>epic</i></b> card!',
+    },
+  },
+  LEGENDARY: {
+    image: 'TB_BaconShop_HERO_91',
+    bucket: BUCKETS.RARITY.LEGENDARY,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>legendary</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>legendary</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>legendary</i></b> cards!',
+      GET: 'Get a random <b><i>legendary</i></b> card!',
+    },
+  },
   DEAL_DAMAGE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_29',
     bucket: BUCKETS.CUSTOM.DEAL_DAMAGE,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>deal damage</i></b>!',
@@ -724,7 +764,7 @@ export const EVENTS = {
     },
   },
   MANA_CRYSTAL: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_53',
     bucket: BUCKETS.CUSTOM.MANA_CRYSTAL,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>interact with Mana Crystals</i></b>!',
@@ -734,7 +774,7 @@ export const EVENTS = {
     },
   },
   HEAL: {
-    image: 'bartender_bob',
+    image: 'BG20_HERO_101',
     bucket: BUCKETS.CUSTOM.HEAL,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>heal</i></b>!',
@@ -744,7 +784,7 @@ export const EVENTS = {
     },
   },
   MANA_CHEAT: {
-    image: 'bartender_bob',
+    image: 'BG21_HERO_010',
     bucket: BUCKETS.CUSTOM.MANA_CHEAT,
 
     tooltips: {
@@ -755,7 +795,7 @@ export const EVENTS = {
     },
   },
   BUFF: {
-    image: 'bartender_bob',
+    image: 'HERO_05y',
     bucket: BUCKETS.CUSTOM.BUFF,
 
     tooltips: {
@@ -766,7 +806,7 @@ export const EVENTS = {
     },
   },
   SHUFFLE_DECK: {
-    image: 'bartender_bob',
+    image: 'DRGA_BOSS_29h',
     bucket: BUCKETS.CUSTOM.SHUFFLE_DECK,
 
     tooltips: {
@@ -777,7 +817,7 @@ export const EVENTS = {
     },
   },
   CAST_SPELL: {
-    image: 'bartender_bob',
+    image: 'HERO_02ak',
     bucket: BUCKETS.CUSTOM.CAST_SPELL,
 
     tooltips: {
@@ -788,7 +828,7 @@ export const EVENTS = {
     },
   },
   ARMOR: {
-    image: 'bartender_bob',
+    image: 'HERO_01a',
     bucket: BUCKETS.CUSTOM.ARMOR,
 
     tooltips: {
@@ -799,7 +839,7 @@ export const EVENTS = {
     },
   },
   DRAW: {
-    image: 'bartender_bob',
+    image: 'THD_028',
     bucket: BUCKETS.CUSTOM.DRAW,
 
     tooltips: {
@@ -810,7 +850,7 @@ export const EVENTS = {
     },
   },
   SUMMON: {
-    image: 'bartender_bob',
+    image: 'HERO_08b',
     bucket: BUCKETS.CUSTOM.SUMMON,
 
     tooltips: {
@@ -821,7 +861,7 @@ export const EVENTS = {
     },
   },
   DIE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_70',
     bucket: BUCKETS.CUSTOM.DIE,
 
     tooltips: {
@@ -832,7 +872,7 @@ export const EVENTS = {
     },
   },
   FROST_RUNE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_Deathwhisper',
     bucket: BUCKETS.CUSTOM.FROST_RUNE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Frost Rune</i></b> cards!',
@@ -842,7 +882,7 @@ export const EVENTS = {
     },
   },
   UNHOLY_RUNE: {
-    image: 'bartender_bob',
+    image: 'ICCA06_001',
     bucket: BUCKETS.CUSTOM.UNHOLY_RUNE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Unholy Rune</i></b> cards!',
@@ -852,7 +892,7 @@ export const EVENTS = {
     },
   },
   BLOOD_RUNE: {
-    image: 'bartender_bob',
+    image: 'HERO_11c',
     bucket: BUCKETS.CUSTOM.BLOOD_RUNE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Blood Rune</i></b> cards!',
@@ -862,7 +902,7 @@ export const EVENTS = {
     },
   },
   DESTROY: {
-    image: 'bartender_bob',
+    image: 'BG23_HERO_201',
     bucket: BUCKETS.CUSTOM.DESTROY,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>destroy</i></b>!',
@@ -872,7 +912,7 @@ export const EVENTS = {
     },
   },
   DAMAGE_YOUR_HERO: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_25',
     bucket: BUCKETS.CUSTOM.DAMAGE_YOUR_HERO,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>damage your hero</i></b>!',
@@ -882,7 +922,7 @@ export const EVENTS = {
     },
   },
   CREWMATE: {
-    image: 'bartender_bob',
+    image: 'HERO_10bb',
     bucket: BUCKETS.CUSTOM.CREWMATE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Crewmate</i></b> cards!',
@@ -892,7 +932,7 @@ export const EVENTS = {
     },
   },
   CLASS: {
-    image: 'bartender_bob',
+    image: 'BG23_HERO_305',
     bucket: BUCKETS.CUSTOM.CLASS,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>steal from another class</i></b>!',
@@ -902,7 +942,7 @@ export const EVENTS = {
     },
   },
   DAMAGED: {
-    image: 'bartender_bob',
+    image: 'BG20_HERO_100',
     bucket: BUCKETS.CUSTOM.DAMAGED,
 
     tooltips: {
@@ -913,7 +953,7 @@ export const EVENTS = {
     },
   },
   TRANSFORM: {
-    image: 'bartender_bob',
+    image: 'BG23_HERO_304',
     bucket: BUCKETS.CUSTOM.TRANSFORM,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Transform</i></b> cards!',
@@ -923,7 +963,7 @@ export const EVENTS = {
     },
   },
   DRINK: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AC',
     bucket: BUCKETS.CUSTOM.DRINK,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Drink</i></b> cards!',
@@ -933,7 +973,7 @@ export const EVENTS = {
     },
   },
   MAP: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AN',
     bucket: BUCKETS.CUSTOM.MAP,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Map</i></b> cards!',
@@ -943,7 +983,7 @@ export const EVENTS = {
     },
   },
   SMOLDERING: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShopBob_SKIN_AG',
     bucket: BUCKETS.CUSTOM.SMOLDERING,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Smoldering</i></b> cards!',
@@ -953,7 +993,7 @@ export const EVENTS = {
     },
   },
   TYPE: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_33',
     bucket: BUCKETS.CUSTOM.TYPE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Minion Type</i></b> cards!',
@@ -963,7 +1003,7 @@ export const EVENTS = {
     },
   },
   CHOOSE_ONE: {
-    image: 'bartender_bob',
+    image: 'HERO_06d',
     bucket: BUCKETS.CUSTOM.CHOOSE_ONE,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Choose One</i></b> cards!',
@@ -973,7 +1013,7 @@ export const EVENTS = {
     },
   },
   TWO: {
-    image: 'bartender_bob',
+    image: 'GILA_BOSS_59h',
     bucket: BUCKETS.CUSTOM.TWO,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>interact with exactly 2 damage</i></b>!',
@@ -983,7 +1023,7 @@ export const EVENTS = {
     },
   },
   TREANT: {
-    image: 'bartender_bob',
+    image: 'BG32_HERO_001',
     bucket: BUCKETS.CUSTOM.TREANT,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Treant</i></b> cards!',
@@ -993,7 +1033,7 @@ export const EVENTS = {
     },
   },
   ONE: {
-    image: 'bartender_bob',
+    image: 'HERO_04c',
     bucket: BUCKETS.CUSTOM.ONE,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>interact with 1-Cost and 1-Mana cards</i></b>!',
@@ -1003,7 +1043,7 @@ export const EVENTS = {
     },
   },
   LEECH: {
-    image: 'bartender_bob',
+    image: 'HERO_11g',
     bucket: BUCKETS.CUSTOM.LEECH,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Leech</i></b> cards!',
@@ -1013,7 +1053,7 @@ export const EVENTS = {
     },
   },
   GORISHI: {
-    image: 'bartender_bob',
+    image: 'HERO_10x',
     bucket: BUCKETS.CUSTOM.GORISHI,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Gorishi</i></b> cards!',
@@ -1023,7 +1063,7 @@ export const EVENTS = {
     },
   },
   LIBRAM: {
-    image: 'bartender_bob',
+    image: 'HERO_04l',
     bucket: BUCKETS.CUSTOM.LIBRAM,
     tooltips: {
       SHOP: 'Open a shop with <b><i>Libram</i></b> cards!',
@@ -1033,7 +1073,7 @@ export const EVENTS = {
     },
   },
   HERO_HEALTH: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_56',
     bucket: BUCKETS.CUSTOM.HERO_HEALTH,
     tooltips: {
       SHOP: "Open a shop with cards that <b><i>interact with your hero's health</i></b>!",
@@ -1043,13 +1083,23 @@ export const EVENTS = {
     },
   },
   ALL_MINIONS: {
-    image: 'bartender_bob',
+    image: 'TB_BaconShop_HERO_72',
     bucket: BUCKETS.CUSTOM.ALL_MINIONS,
     tooltips: {
       SHOP: 'Open a shop with cards that <b><i>target all minions</i></b>!',
       DISCOVER: 'Discover 2 cards that <b><i>target all minions</i></b>!',
       CHOOSE: 'Choose 1 of 2 cards that <b><i>target all minions</i></b>!',
       GET: 'Get a random card that <b><i>target all minions</i></b>!',
+    },
+  },
+  RANDOM: {
+    image: 'TB_BaconShop_HERO_35',
+    bucket: BUCKETS.CUSTOM.RANDOM,
+    tooltips: {
+      SHOP: 'Open a shop with cards that <b><i>do random stuff</i></b>!',
+      DISCOVER: 'Discover 2 cards that <b><i>do random stuff</i></b>!',
+      CHOOSE: 'Choose 1 of 2 cards that <b><i>do random stuff</i></b>!',
+      GET: 'Get a random card that <b><i>does random stuff</i></b>!',
     },
   },
 }

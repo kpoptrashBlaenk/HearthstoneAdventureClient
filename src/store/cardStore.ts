@@ -13,9 +13,11 @@ export const useCardStore = defineStore('card', {
       let cards = JSON.parse(localStorage.getItem('cards')!)
       const today = new Date().toISOString().slice(0, 10)
 
-      if (!cards || cards.date !== today) {
+      if (!cards || !cards.cards || cards.date !== today) {
         cards = await fetchCards()
-        this.cacheCards(cards.cards)
+        this.cacheCards(cards)
+        this.cards = cards
+        return
       }
 
       this.cards = cards.cards

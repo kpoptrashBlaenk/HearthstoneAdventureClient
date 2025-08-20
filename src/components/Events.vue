@@ -13,8 +13,8 @@
                 : event.tooltips.GET,
         escape: false,
       }"
-      :src="`events/${event.image}.webp`"
-      class="-mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
+      :src="`/events/${event.image}.png`"
+      class="mx-5 -mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
       :class="
         eventCards[index].length >= 24
           ? 'drop-shadow-common'
@@ -60,7 +60,6 @@ onBeforeMount(() => {
 
     // Filter event cards
     const bucketParamCards = cardStore.filter(cardStore.cards, event.bucket.params as QueryParam[], 'some')
-    const whatever = classQueryParams(event.bucket.classes?.map((id) => getClassById(id as number)))
     const bucketClassesCards = cardStore.filter(
       bucketParamCards,
       classQueryParams(event.bucket.classes?.map((id) => getClassById(id))),

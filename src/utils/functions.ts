@@ -1,6 +1,7 @@
 import type { Class, HearthstoneCard, QueryParam } from '@/types/types'
 import type { ToastServiceMethods } from 'primevue'
 import { CLASSES, RARITY_ID } from './constants'
+import { EVENTS } from './events'
 
 /**
  * Create an error toast

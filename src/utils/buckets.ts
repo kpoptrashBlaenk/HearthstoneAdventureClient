@@ -1,4 +1,13 @@
-import { CARD_SET_ID, CARD_TYPE_ID, CLASSES, FACTION_ID, KEYWORD_ID, MINION_TYPE_ID, SPELL_SCHOOL_ID } from './constants'
+import {
+  CARD_SET_ID,
+  CARD_TYPE_ID,
+  CLASSES,
+  FACTION_ID,
+  KEYWORD_ID,
+  MINION_TYPE_ID,
+  RARITY_ID,
+  SPELL_SCHOOL_ID,
+} from './constants'
 
 export const BUCKETS = {
   ALL: {
@@ -294,6 +303,12 @@ export const BUCKETS = {
     WARRIOR: { params: [{ key: 'classId', value: CLASSES.WARRIOR }], classes: [CLASSES.WARRIOR.id] },
     NEUTRAL: { params: [{ key: 'classId', value: CLASSES.NEUTRAL }], classes: [CLASSES.NEUTRAL.id] },
   },
+  RARITY: {
+    COMMON: { params: [{ key: 'rarityId', value: RARITY_ID.COMMON }], classes: null },
+    RARE: { params: [{ key: 'rarityId', value: RARITY_ID.RARE }], classes: null },
+    EPIC: { params: [{ key: 'rarityId', value: RARITY_ID.EPIC }], classes: null },
+    LEGENDARY: { params: [{ key: 'rarityId', value: RARITY_ID.LEGENDARY }], classes: null },
+  },
   CUSTOM: {
     DEAL_DAMAGE: { params: [{ key: 'text', value: ['deal', 'damage'] }], classes: null },
     MANA_CRYSTAL: { params: [{ key: 'text', value: ['mana', 'crystal'] }], classes: [CLASSES.DRUID.id] },
@@ -439,5 +454,6 @@ export const BUCKETS = {
       classes: [CLASSES.DEATH_KNIGHT.id, CLASSES.PRIEST.id, CLASSES.WARLOCK.id],
     },
     ALL_MINIONS: { params: [{ key: 'text', value: ['all', 'minions'] }], classes: null },
+    RANDOM: { params: [{ key: 'text', value: ['all', 'random'] }], classes: null },
   },
 }
