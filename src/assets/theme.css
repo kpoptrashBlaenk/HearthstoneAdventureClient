@@ -207,8 +207,8 @@ body {
   --p-popover-arrow-offset: 0 !important;
 
   /* ProgressSpinner */
-  --p-progressspinner-color-one: var(--purple-light) !important;
-  --p-progressspinner-color-two: var(--purple) !important;
-  --p-progressspinner-color-three: var(--purple-dark) !important;
-  --p-progressspinner-color-four: var(--epic) !important;
+  --p-progressspinner-color-one: var(--beige-light) !important;
+  --p-progressspinner-color-two: var(--beige) !important;
+  --p-progressspinner-color-three: var(--gold) !important;
+  --p-progressspinner-color-four: var(--gold-dark) !important;
 }

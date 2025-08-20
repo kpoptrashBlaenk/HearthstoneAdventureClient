@@ -1,6 +1,7 @@
 import type { Class, Event, EventType, HearthstoneCard } from '@/types/types'
 import { EVENT_TYPES } from '@/utils/events'
 import { defineStore } from 'pinia'
+import { usePlayerStore } from './playerStore'
 
 export const useGlobalStore = defineStore('global', {
   state: () => ({
@@ -19,7 +20,7 @@ export const useGlobalStore = defineStore('global', {
       },
     },
     events: {
-      round: 1,
+      round: 0,
       cards: [] as HearthstoneCard[],
       type: null as EventType | null,
       event: null as Event | null,
@@ -82,6 +83,7 @@ export const useGlobalStore = defineStore('global', {
     resetEvents(): void {
       this.events.round++
       this.events.current = 0
+      usePlayerStore().gold += 5
     },
   },
 })
