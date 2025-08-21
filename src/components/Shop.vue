@@ -21,6 +21,7 @@
             ? 'drop-shadow-gold cursor-pointer hover:scale-105 active:scale-110'
             : 'cursor-default grayscale-100',
           card.cardTypeId === CARD_TYPE_ID.LOCATION ? 'p-3' : '',
+          card.cardTypeId === CARD_TYPE_ID.HERO ? '-mt-6.5 p-2' : '',
         ]"
         @click="buy(card, cardPrice(card, 'shop'))"
       >
