@@ -1,13 +1,18 @@
 <template>
   <div class="flex flex-col justify-center">
     <!-- Grid -->
-    <div class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+    <div class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       <!-- Classes -->
       <div
         v-for="cl in classes.filter((cl) => cl.id !== CLASSES.NEUTRAL.id)"
-        class="col relative cursor-pointer rounded-md transition-transform duration-150 active:scale-90"
+        class="relative h-[125px] w-[151px] cursor-pointer rounded-md transition-transform duration-150 active:scale-90"
       >
-        <img :src="cl.image" :class="{ 'drop-shadow-gold': selectedClasses.includes(cl) }" @click="selectClass(cl)" />
+        <img
+          :src="cl.image"
+          :class="{ 'drop-shadow-gold': selectedClasses.includes(cl) }"
+          @click="selectClass(cl)"
+          class="h-full w-full object-cover"
+        />
         <div class="absolute right-0 bottom-5 w-2/3 text-xs font-bold">
           {{ cl.name }}
         </div>
