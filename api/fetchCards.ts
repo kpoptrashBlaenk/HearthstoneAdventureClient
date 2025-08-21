@@ -2,7 +2,7 @@ export default async function handler(req: any, res: any) {
   const clientId = process.env.BLIZZARD_CLIENT_ID
   const clientSecret = process.env.BLIZZARD_CLIENT_SECRET
 
-  console.log(clientId, clientSecret)
+  console.log('secrets', clientId, clientSecret)
 
   if (!clientId || !clientSecret) {
     return res.status(500).json({ error: 'Missing Blizzard credentials' })
