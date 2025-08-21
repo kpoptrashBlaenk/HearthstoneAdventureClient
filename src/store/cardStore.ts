@@ -16,6 +16,7 @@ export const useCardStore = defineStore('card', {
       if (!cards || !cards.cards || cards.date !== today) {
         cards = await fetchCards()
         console.log(cards)
+        
         if (cards) {
           this.cacheCards(cards)
           this.cards = cards

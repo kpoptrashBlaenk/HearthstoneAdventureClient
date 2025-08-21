@@ -18,15 +18,14 @@ export function errorToast(toast: ToastServiceMethods, detail: string): void {
  * @returns All Hearthstone cards
  */
 export async function fetchCards(): Promise<undefined | HearthstoneCard[]> {
-  try {
-    const response = await fetch('/api/fetchCards')
+  const response = await fetch('/api/fetchCards')
 
-    const data = await response.json()
-
-    return data as HearthstoneCard[]
-  } catch (error) {
-    console.error(error)
+  if (!response.ok) {
+    return
   }
+
+  const data = await response.json()
+  return data as HearthstoneCard[]
 }
 
 /**
