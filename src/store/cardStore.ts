@@ -12,7 +12,7 @@ export const useCardStore = defineStore('card', {
     async init(): Promise<void> {
       let cards = JSON.parse(localStorage.getItem('cards')!)
       const today = new Date().toISOString().slice(0, 10)
-
+      
       if (!cards || !cards.cards || cards.date !== today) {
         console.log('fetching')
         cards = await fetchCards()
