@@ -91,13 +91,11 @@ export const BUCKETS = {
     IMBUE: {
       params: [
         { key: 'keywordIds', value: KEYWORD_ID.IMBUE },
-        [
-          { key: 'text', value: 'hero' },
-          { key: 'text', value: 'power' },
-          { key: 'text', value: 'wisp' },
-        ],
+        { key: 'text', value: ['hero', 'power'] },
+        { key: 'text', value: 'wisp' },
+        ,
       ],
-      classes: [CLASSES.DRUID.id, CLASSES.HUNTER.id, CLASSES.PALADIN.id, CLASSES.PRIEST.id, CLASSES.ROGUE.id, CLASSES.SHAMAN.id],
+      classes: [CLASSES.DRUID.id, CLASSES.HUNTER.id, CLASSES.PALADIN.id, CLASSES.PRIEST.id, CLASSES.MAGE.id, CLASSES.SHAMAN.id],
     },
     DARK_GIFT: {
       params: [{ key: 'keywordIds', value: KEYWORD_ID.DARK_GIFT }],
