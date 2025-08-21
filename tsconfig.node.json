@@ -2,7 +2,7 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "include": ["api/*"],
   "compilerOptions": {
-    "noEmit": true,
+    "noEmit": false,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ES2022",
