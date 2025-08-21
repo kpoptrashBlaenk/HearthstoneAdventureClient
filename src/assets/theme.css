@@ -1,0 +1,214 @@
+/* Body */
+body {
+  background-color: var(--brown-dark);
+  font-family: 'Baloo 2';
+}
+
+/* Shadow */
+.shadow-gold {
+  box-shadow: var(--p-button-active-raised-shadow);
+}
+
+/* Image */
+.drop-shadow-gold {
+  filter: drop-shadow(var(--drop-shadow-sm) var(--gold));
+}
+.drop-shadow-gold:hover {
+  filter: drop-shadow(var(--drop-shadow-md) var(--gold));
+}
+.drop-shadow-gold:active {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--gold));
+}
+.drop-shadow-common {
+  filter: drop-shadow(var(--drop-shadow-md) var(--common-light));
+}
+.drop-shadow-common:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--common-light));
+}
+.drop-shadow-common:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--common-light));
+}
+.drop-shadow-rare {
+  filter: drop-shadow(var(--drop-shadow-md) var(--rare-light));
+}
+.drop-shadow-rare:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--rare-light));
+}
+.drop-shadow-rare:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--rare-light));
+}
+.drop-shadow-epic {
+  filter: drop-shadow(var(--drop-shadow-md) var(--epic-light));
+}
+.drop-shadow-epic:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--epic-light));
+}
+.drop-shadow-epic:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--epic-light));
+}
+.drop-shadow-legendary {
+  filter: drop-shadow(var(--drop-shadow-md) var(--legendary-light));
+}
+.drop-shadow-legendary:hover {
+  filter: drop-shadow(var(--drop-shadow-lg) var(--legendary-light));
+}
+.drop-shadow-legendary:active {
+  filter: drop-shadow(var(--drop-shadow-xl) var(--legendary-light));
+}
+
+/* Border */
+.border-gold {
+  border: 1px solid var(--gold-dark);
+}
+
+/* Background */
+.bg-common {
+  background-color: var(--common);
+}
+.bg-rare {
+  background-color: var(--rare);
+}
+.bg-epic {
+  background-color: var(--epic);
+}
+.bg-legendary {
+  background-color: var(--legendary);
+}
+.bg-purple-light {
+  background-color: var(--purple-light);
+}
+.bg-purple-dark {
+  background-color: var(--purple-dark);
+}
+
+/* Button */
+.p-button {
+  border-width: var(--p-button-border-thickness) !important;
+}
+.p-button-raised:disabled {
+  box-shadow: none;
+}
+.p-button-raised:hover {
+  box-shadow: var(--shadow-lg) var(--gold);
+}
+.p-button-raised:active {
+  box-shadow: var(--p-button-active-raised-shadow);
+}
+
+/* Text */
+.text-shadow {
+  text-shadow: var(--text-shadow);
+}
+
+/* Tooltip */
+.p-tooltip-text {
+  font-family: 'Baloo 2' !important;
+  font-weight: 600;
+}
+.p-tooltip-arrow {
+  display: none;
+}
+
+/* Popover */
+.p-popover {
+  pointer-events: none;
+}
+
+/* Root */
+:root {
+  /* Colors */
+  --beige: #f0e6d2 !important;
+  --beige-light: #f8f3ea !important;
+  --gold: #ff9c00 !important;
+  --gold-dark: #cc7e00 !important;
+  --brown-light: #4e3b2a !important;
+  --brown: #3a2b1c !important;
+  --brown-dark: #2a1d10 !important;
+  --purple: #7323a0 !important;
+  --purple-light: #8a2bb8 !important;
+  --purple-dark: #5a1d7a !important;
+  --grey: #999999 !important;
+  --grey-light: #b0b0b0 !important;
+  --grey-dark: #7a7a7a !important;
+
+  --common: #858585 !important;
+  --rare: #315376 !important;
+  --epic: #644c82 !important;
+  --legendary: #855c25 !important;
+
+  --common-light: #b0b0b0 !important;
+  --rare-light: #4a7ab0 !important;
+  --epic-light: #8b68a8 !important;
+  --legendary-light: #b37b3f !important;
+
+  /* Shadow */
+  --shadow-sm: 0 0 2px 1px;
+  --shadow-md: 0 0 4px 2px;
+  --shadow-lg: 0 0 8px 4px;
+  --drop-shadow-sm: 0 0 4px;
+  --drop-shadow-md: 0 0 8px;
+  --drop-shadow-lg: 0 0 12px;
+  --drop-shadow-xl: 0 0 24px;
+
+  /* Button */
+  --p-button-primary-background: var(--purple-light) !important;
+  --p-button-primary-hover-background: var(--purple) !important;
+  --p-button-primary-active-background: var(--purple-dark) !important;
+
+  --p-button-primary-border-color: var(--grey-light) !important;
+  --p-button-primary-hover-border-color: var(--grey) !important;
+  --p-button-primary-active-border-color: var(--grey-dark) !important;
+  --p-button-border-thickness: 3px !important;
+
+  --p-button-raised-shadow: var(--shadow-sm) var(--gold) !important;
+  --p-button-hover-raised-shadow: var(--shadow-md) var(--gold) !important;
+  --p-button-active-raised-shadow: var(--shadow-lg) var(--gold) !important;
+
+  /* Card */
+  --p-card-background: var(--brown) !important;
+  --p-card-color: var(--beige) !important;
+  --p-card-shadow: var(--shadow-sm) var(--gold-dark) !important;
+
+  /* Slider  */
+  --p-slider-track-background: var(--beige) !important;
+  --p-slider-range-background: var(--p-button-primary-background) !important;
+
+  --p-slider-handle-background: var(--beige) !important;
+  --p-slider-handle-hover-background: var(--beige) !important;
+  --p-slider-handle-content-background: var(--p-button-primary-background) !important;
+  --p-slider-handle-content-hover-background: var(--p-button-primary-background) !important;
+
+  /* InputText */
+  --p-inputtext-background: var(--beige-light) !important;
+  --p-inputtext-color: var(--brown-dark) !important;
+  --p-inputtext-border-color: var(--brown) !important;
+  --p-inputtext-focus-border-color: var(--p-inputtext-background) !important;
+
+  /* IftaLabel */
+  --p-iftalabel-color: var(--brown-light) !important;
+  --p-iftalabel-focus-color: var(--brown-dark) !important;
+
+  /* Text */
+  --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+
+  /* Tooltip */
+  --p-tooltip-shadow: var(--shadow-sm) var(--gold) !important;
+  --p-tooltip-background: var(--brown-light) !important;
+  --p-tooltip-color: var(--beige) !important;
+
+  /* Popover */
+  --p-popover-background: transparent !important;
+  --p-popover-border-color: transparent !important;
+  --p-popover-border-radius: 0 !important;
+  --p-popover-shadow: none !important;
+  --p-popover-content-padding: 0 !important;
+  --p-popover-color: inherit !important;
+  --p-popover-gutter: 0 !important;
+  --p-popover-arrow-offset: 0 !important;
+
+  /* ProgressSpinner */
+  --p-progressspinner-color-one: var(--beige-light) !important;
+  --p-progressspinner-color-two: var(--beige) !important;
+  --p-progressspinner-color-three: var(--gold) !important;
+  --p-progressspinner-color-four: var(--gold-dark) !important;
+}
