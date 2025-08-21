@@ -1,11 +1,12 @@
 {
   "extends": "@tsconfig/node22/tsconfig.json",
-  "include": ["api/*"],
+  "include": ["vite.config.*", "tailwind.config.*", "postcss.config.*", "api/*"],
   "compilerOptions": {
     "noEmit": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2022",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "types": ["node"]
   }
 }

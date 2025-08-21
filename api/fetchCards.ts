@@ -1,5 +1,4 @@
 export default async function handler(req: any, res: any) {
-  console.log('backend reached')
   const clientId = process.env.BLIZZARD_CLIENT_ID
   const clientSecret = process.env.BLIZZARD_CLIENT_SECRET
 
