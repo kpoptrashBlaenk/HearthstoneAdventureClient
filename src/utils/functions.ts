@@ -1,7 +1,6 @@
 import type { Class, HearthstoneCard, QueryParam } from '@/types/types'
 import type { ToastServiceMethods } from 'primevue'
 import { CLASSES, RARITY_ID } from './constants'
-import { EVENTS } from './events'
 
 /**
  * Create an error toast
@@ -18,12 +17,16 @@ export function errorToast(toast: ToastServiceMethods, detail: string): void {
  *
  * @returns All Hearthstone cards
  */
-export async function fetchCards(): Promise<HearthstoneCard[]> {
-  const response = await fetch('/api/fetchCards')
+export async function fetchCards(): Promise<undefined | HearthstoneCard[]> {
+  try {
+    const response = await fetch('/api/fetchCards')
 
-  const data = await response.json()
+    const data = await response.json()
 
-  return data as HearthstoneCard[]
+    return data as HearthstoneCard[]
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 /**
