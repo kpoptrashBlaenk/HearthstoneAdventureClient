@@ -6,13 +6,9 @@
       <div
         v-for="cl in classes.filter((cl) => cl.id !== CLASSES.NEUTRAL.id)"
         class="relative h-[125px] w-[151px] cursor-pointer rounded-md transition-transform duration-150 active:scale-90"
+        @click="selectClass(cl)"
       >
-        <img
-          :src="cl.image"
-          :class="{ 'drop-shadow-gold': selectedClasses.includes(cl) }"
-          @click="selectClass(cl)"
-          class="h-full w-full object-cover"
-        />
+        <img :src="cl.image" :class="{ 'drop-shadow-gold': selectedClasses.includes(cl) }" class="h-full w-full object-cover" />
         <div class="absolute right-0 bottom-5 w-2/3 text-xs font-bold">
           {{ cl.name }}
         </div>

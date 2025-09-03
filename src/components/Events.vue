@@ -1,31 +1,38 @@
 <template>
   <div class="mt-5 flex flex-wrap justify-center">
-    <img
+    <div
       v-for="(event, index) in events"
-      v-tooltip.top="{
-        value:
+      class="relative mx-5 -mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
+    >
+      <img
+        v-tooltip.top="{
+          value:
+            eventCards[index].length >= 24
+              ? event.tooltips.SHOP
+              : eventCards[index].length >= 12
+                ? event.tooltips.DISCOVER
+                : eventCards[index].length >= 8
+                  ? event.tooltips.CHOOSE
+                  : event.tooltips.GET,
+          escape: false,
+        }"
+        :src="`/events/${event.image}.png`"
+        class="object-cover"
+        :class="
           eventCards[index].length >= 24
-            ? event.tooltips.SHOP
+            ? 'drop-shadow-common'
             : eventCards[index].length >= 12
-              ? event.tooltips.DISCOVER
+              ? 'drop-shadow-rare'
               : eventCards[index].length >= 8
-                ? event.tooltips.CHOOSE
-                : event.tooltips.GET,
-        escape: false,
-      }"
-      :src="`/events/${event.image}.png`"
-      class="mx-5 -mt-5 w-40 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110 active:scale-120"
-      :class="
-        eventCards[index].length >= 24
-          ? 'drop-shadow-common'
-          : eventCards[index].length >= 12
-            ? 'drop-shadow-rare'
-            : eventCards[index].length >= 8
-              ? 'drop-shadow-epic'
-              : 'drop-shadow-legendary'
-      "
-      @click="emitNext(index)"
-    />
+                ? 'drop-shadow-epic'
+                : 'drop-shadow-legendary'
+        "
+        @click="emitNext(index)"
+      />
+      <div class="absolute bottom-7 left-4.5 w-31 bg-black/70 text-center text-xs font-bold">
+        {{ event.name }}
+      </div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
