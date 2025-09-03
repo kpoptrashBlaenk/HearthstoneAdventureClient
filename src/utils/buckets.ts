@@ -453,6 +453,12 @@ export const BUCKETS = {
     },
     ALL_MINIONS: { params: [{ key: 'text', value: ['all', 'minions'] }], classes: null },
     RANDOM: { params: [{ key: 'text', value: ['all', 'random'] }], classes: null },
-    MASK: { params: [{ key: 'name', value: 'mask' }, { key: 'text', value: 'mask' }], classes: null },
+    MASK: {
+      params: [
+        { key: 'name', value: 'mask' },
+        { key: 'text', value: 'mask' },
+      ],
+      classes: null,
+    },
   },
 }
