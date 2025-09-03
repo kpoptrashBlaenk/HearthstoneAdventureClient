@@ -1102,6 +1102,16 @@ export const EVENTS = {
       GET: 'Get a random card that <b><i>does random stuff</i></b> !',
     },
   },
+  MASK: {
+    image: 'HERO_07bf.png',
+    bucket: BUCKETS.CUSTOM.MASK,
+    tooltips: {
+      SHOP: 'Open a shop with <b><i>Mask</i></b> cards!',
+      DISCOVER: 'Discover 2 <b><i>Mask</i></b> cards!',
+      CHOOSE: 'Choose 1 of 2 <b><i>Mask</i></b> cards!',
+      GET: 'Get a random <b><i>Mask</i></b> card!',
+    },
+  },
 }
 export const EVENT_KEYS = Object.keys(CLASSES) as EventKey[]
 
