@@ -177,6 +177,7 @@ body {
   --p-slider-handle-hover-background: var(--beige) !important;
   --p-slider-handle-content-background: var(--p-button-primary-background) !important;
   --p-slider-handle-content-hover-background: var(--p-button-primary-background) !important;
+  --p-slider-handle-focus-ring-width: 0px !important;
 
   /* InputText */
   --p-inputtext-background: var(--beige-light) !important;
